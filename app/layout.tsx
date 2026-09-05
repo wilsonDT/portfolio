@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Geist, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const serif = EB_Garamond({
@@ -35,7 +36,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <script
           dangerouslySetInnerHTML={{
@@ -49,6 +54,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );
