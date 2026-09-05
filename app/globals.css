@@ -85,15 +85,20 @@ a:hover {
 
 /* Reveal: the hidden start state exists only when JS is present */
 html.js [data-reveal] {
-  clip-path: inset(0 100% 0 0);
+  /* visibility, not clip-path: a clipped element has a 0x0 intersection rect and never crosses the observer threshold */
+  visibility: hidden;
 }
 
 html.js [data-reveal].in {
-  animation: wipe 0.52s var(--ease) forwards;
+  visibility: visible;
+  animation: wipe 0.52s var(--ease) both;
   animation-delay: calc(var(--i, 0) * 80ms);
 }
 
 @keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
   to {
     clip-path: inset(0 0 0 0);
   }
@@ -159,6 +164,7 @@ html.js [data-reveal-frame].in .still {
     clip-path: none;
     transform: none;
     opacity: 1;
+    visibility: visible;
     animation: none;
   }
 
