@@ -52,35 +52,36 @@ a:hover {
   scrollbar-color: var(--line-2) var(--ground);
 }
 
-/* Layout measures */
-.col {
-  width: min(620px, 86%);
-  margin-inline: auto;
-}
+/* Layout measures and type registers live in the components layer so Tailwind utilities can override them */
+@layer components {
+  .col {
+    width: min(620px, 86%);
+    margin-inline: auto;
+  }
 
-.wide {
-  width: min(800px, 96%);
-  margin-inline: auto;
-}
+  .wide {
+    width: min(800px, 96%);
+    margin-inline: auto;
+  }
 
-/* Type registers */
-.serif {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.008em;
-}
+  .serif {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.008em;
+  }
 
-.mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
+  .mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
 
-.hair {
-  height: 1px;
-  background: var(--line);
+  .hair {
+    height: 1px;
+    background: var(--line);
+  }
 }
 
 /* Reveal: the hidden start state exists only when JS is present */

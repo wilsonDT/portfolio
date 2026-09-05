@@ -13,7 +13,7 @@ export function Slate({ left, right, reveal, i, className = "" }: Props) {
       data-reveal={reveal ? "" : undefined}
       data-i={i}
     >
-      <span>{left}</span>
+      <span className="shrink-0 whitespace-nowrap">{left}</span>
       {right ? <span className="text-right">{right}</span> : null}
     </div>
   );

@@ -81,7 +81,7 @@ export default async function DossierPage({ params }: Params) {
             {d.title}
           </h1>
           <p className="mt-[22px] max-w-[30ch] text-[19px] font-light leading-[1.45]">{d.deck}</p>
-          {d.client.redacted ? <p className="mono mt-4">Client under NDA. Architecture and numbers are real.</p> : null}
+          {d.client.redacted ? <p className="mt-4 text-[13px] text-[var(--mute)]">Client under NDA. Architecture and numbers are real.</p> : null}
           <SpecSheet d={d} />
         </header>
 
