@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --ground: #0c0c0b;
+  --ground: #0a0a0a;
   --ink: #ecebe6;
   --mute: #8f8e89;
   --line: #2a2a28;
@@ -13,10 +13,11 @@
 }
 
 html {
-  /* Filmic ground: grain over a warm key-light bloom at the top of the page, falling to near-black */
+  /* Ground: light grain over one subtle gradient that runs the full height of the page */
+  min-height: 100dvh;
   background:
     url("/grain.png") repeat,
-    radial-gradient(1400px 760px at 50% -120px, #1b1510 0%, rgba(27, 21, 16, 0) 70%),
+    linear-gradient(180deg, #121211 0%, #0a0a0a 45%, #050504 100%) no-repeat,
     var(--ground);
 }
 
@@ -290,19 +291,4 @@ html.js [data-reveal-frame].in .still {
     flex-basis: 22px;
     transform: rotate(90deg);
   }
-}
-
-/* Lens vignette: fixed to the viewport, painted beneath content */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
-}
-
-/* Scene cut: a dip to black that fades in and out of the page instead of a hard slab */
-.cut-band {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--black) 32%, var(--black) 68%, rgba(0, 0, 0, 0) 100%);
 }

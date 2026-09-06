@@ -1,7 +1,7 @@
-// A full-width black band between scenes. The label is the section's heading.
+// A quiet band between scenes, same ground as the page. The label is the section heading.
 export function CutBand({ label }: { label: string }) {
   return (
-    <div className="cut-band flex h-[240px] w-full items-center justify-center">
+    <div className="flex h-[220px] w-full items-center justify-center">
       <h2 className="mono m-0" data-reveal="">
         {label}
       </h2>
