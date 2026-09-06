@@ -33,7 +33,7 @@ export const featured: Featured[] = [
     industry: "Microfinance",
     year: "2025",
     line: "An AI roleplay coach for frontline staff: personas that push back, a feedback agent, a knowledge assistant. Shipped at OnePuhunan as Pocket Branch Manager.",
-    did: "Built the reusable product. The OnePuhunan rollout was tailored by the project team.",
+    did: "Built the core simulation product.",
     href: "https://stories.thinkingmachin.es/onepuhunan-agentic-ai-training-microfinance/",
     figure: { value: "4.2", label: "officer confidence out of 5, up from 3.8" },
     frame: {

@@ -3,13 +3,14 @@ import { CopyEmail } from "@/components/CopyEmail";
 import { Poster } from "@/components/Poster";
 import { Scene } from "@/components/Scene";
 import { SiteNav } from "@/components/SiteNav";
-import { VideoFacade } from "@/components/VideoFacade";
+import { Reel } from "@/components/Reel";
 import { WorkSheet } from "@/components/WorkSheet";
 import { afterHours } from "@/content/after-hours";
 import { site } from "@/content/site";
 import { featured, restOfWork } from "@/content/work";
 
 const years = [...new Set(featured.map((w) => w.year))].join(" · ");
+const youtube = site.links.find((l) => l.label === "YouTube")!.href;
 
 export default function Page() {
   return (
@@ -57,30 +58,51 @@ export default function Page() {
           </div>
         </Scene>
 
-        <Scene id="after-hours" title="After hours" right="YouTube">
-          <div className="space-y-14 pt-12">
-            {afterHours.videos.map((v, i) => (
-              <VideoFacade key={v.id} v={v} i={i} />
-            ))}
+        <Scene
+          id="after-hours"
+          title="After hours"
+          right={
+            <a href={youtube} className="no-underline hover:text-[var(--ink)]" target="_blank" rel="noreferrer">
+              YouTube
+            </a>
+          }
+        >
+          <div className="col mt-8">
+            <p className="max-w-[62ch] text-[15.5px] leading-[1.6] text-[var(--ink-2)]">{afterHours.note}</p>
+          </div>
+          <div className="mt-12">
+            <Reel videos={afterHours.videos} />
           </div>
         </Scene>
 
-        <Scene id="contact" title="End credits">
-          <div className="col pt-12 pb-24">
-            <CopyEmail email={site.email} />
-            <ul className="mono mt-10 flex flex-wrap gap-x-6 gap-y-2">
-              {site.links.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="no-underline hover:text-[var(--ink)]" target="_blank" rel="noreferrer">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="hair mt-16" />
-            <p className="mono mt-5 normal-case">
-              {site.domain} · v1
-            </p>
+        <Scene id="contact" title="Say hi">
+          <div className="col pt-14 pb-24">
+            <dl className="credits">
+              <dt className="mono">Contact</dt>
+              <dd>
+                <CopyEmail email={site.email} />
+              </dd>
+
+              <dt className="mono">Elsewhere</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
+                  {site.links.map((l) => (
+                    <li key={l.label}>
+                      <a href={l.href} target="_blank" rel="noreferrer">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+
+              <dt className="mono">Site</dt>
+              <dd className="text-[15px] text-[var(--ink-2)]">{site.colophon}</dd>
+            </dl>
+
+            <div className="hair mt-20" />
+            <p className="end-name">{site.name}</p>
+            <p className="mono mt-2 text-center normal-case">{site.domain} · v1</p>
           </div>
         </Scene>
       </main>

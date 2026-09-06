@@ -33,7 +33,7 @@ export const employers: Employer[] = [
             href: nst,
           },
           {
-            text: "Built the reusable AI training simulator behind OnePuhunan's Pocket Branch Manager: roleplay personas that push back, a feedback agent, and a knowledge assistant. The rollout was tailored by the project team.",
+            text: "Built the reusable AI training simulator behind OnePuhunan's Pocket Branch Manager: roleplay personas that push back, a feedback agent, and a knowledge assistant.",
             href: onePuhunan,
           },
           {
@@ -79,7 +79,15 @@ export const employers: Employer[] = [
     logo: "/logos/dlrc.png",
     logoTreat: "white",
     location: "Quezon City, PH",
-    roles: [{ title: "Software Engineer Intern", type: "Internship", start: "Jun 2024", end: "Jul 2024", bullets: [] }],
+    roles: [
+      {
+        title: "Software Engineer Intern",
+        type: "Internship",
+        start: "Jun 2024",
+        end: "Jul 2024",
+        bullets: [{ text: "Designed the frontend in Figma, then built it in TypeScript and Tailwind CSS." }],
+      },
+    ],
   },
   {
     slug: "dost-asti",
@@ -108,5 +116,8 @@ export const education = {
   school: "University of the Philippines Diliman",
   degree: "BS Computer Science, magna cum laude",
   year: "2025",
-  thesis: "Transformer architectures and inference efficiency for rice disease classification.",
+  thesis: {
+    line: "Transformer architectures and inference efficiency for rice disease classification.",
+    href: "https://tuklas.up.edu.ph/Record/UP-8027390931316398454",
+  },
 };

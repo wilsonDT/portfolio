@@ -22,7 +22,17 @@ export function Poster() {
 
       <div className="poster-copy">
         <h1 id="hero" className="serif title">
-          {site.hero}
+          <span className="title-stem">{site.heroStem}</span>
+          <span className="title-roll">
+            {/* The first tail again at the end, so the roll returns to the top on a frame that already matches. Only the first names the heading. */}
+            <span className="title-track">
+              {[...site.heroTail, site.heroTail[0]].map((tail, i) => (
+                <span key={i} className="title-slide" aria-hidden={i > 0 || undefined}>
+                  {tail}
+                </span>
+              ))}
+            </span>
+          </span>
         </h1>
 
         <ul className="billing" aria-label="Credits">

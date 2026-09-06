@@ -5,8 +5,10 @@ export const site = {
   org: "Thinking Machines",
   email: "detorres.wilson21@gmail.com",
   domain: "wilsondetorres.com",
-  // Placeholder until Wilson sends his own hero sentences. This one is his LinkedIn line.
-  hero: "I build AI products people trust.",
+  // The poster's title card: the stem holds, the tail rolls under it. The first tail is his LinkedIn line and the one the OG card and the heading's name carry.
+  // Exactly three tails; the roll's keyframes are keyed to three in globals.css and scripts/check-content.ts holds that.
+  heroStem: "I build AI products",
+  heroTail: ["people trust.", "for real problems.", "that work in prod."],
   // The poster's picture: Wilson's own graded still, exported 2026-09-06 (source PNG kept outside the repo; this JPEG is the full 3840px wide at quality 90). `focus` is the object-position that keeps the subject clear of the title on tall crops.
   keyArt: { src: "/key-art/observation-deck.jpg", focus: "52% 38%" },
   // Placeholder until Wilson writes his own. Assembled from his resume sentences, nothing added.
@@ -21,8 +23,10 @@ export const site = {
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/wilsondetorres/" },
     { label: "GitHub", href: "https://github.com/wilsonDT" },
-    { label: "YouTube", href: "https://www.youtube.com/watch?v=KRr7f29RlJQ" },
+    { label: "YouTube", href: "https://www.youtube.com/@wilson.detorres" },
   ],
+  // The site's own credit in the end block, set like the camera credit on a film.
+  colophon: "Next.js · TypeScript · Vercel",
   sideProjectsLabel: "Side projects",
   sideProjects: [
     {

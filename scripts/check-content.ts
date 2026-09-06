@@ -23,6 +23,7 @@ for (const w of featured) {
   for (const k of ["title", "line", "did", "href"] as const) if (!w[k]) fails.push(`${p}: ${k} empty`);
   if (!w.figure.value || !w.figure.label) fails.push(`${p}: figure incomplete`);
 }
+if (site.heroTail.length !== 3) fails.push("site.heroTail: the title card's roll is keyed to three tails in globals.css");
 for (const e of employers) {
   if (!e.roles.length) fails.push(`experience/${e.slug}: no roles`);
   for (const r of e.roles) if (!r.title || !r.start || !r.end) fails.push(`experience/${e.slug}: role incomplete`);

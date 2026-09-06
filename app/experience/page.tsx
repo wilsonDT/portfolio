@@ -15,7 +15,7 @@ export default function ExperiencePage() {
       <SiteNav current="experience" />
       <main id="main" className="pb-24">
         <header className="col pt-24">
-          <h1 className="serif intro text-[clamp(40px,6vw,58px)] leading-none tracking-[-.02em]">
+          <h1 className="serif intro text-[clamp(40px,6vw,58px)] leading-none tracking-[-.02em] lowercase">
             Experience
           </h1>
           <p className="mono mt-4">{first} – present</p>
@@ -61,17 +61,23 @@ export default function ExperiencePage() {
           );
         })}
 
-        <section id="education" className="col mt-16">
+        {/* Not another employer, so not the employers' shape: no year column, no role lines, no left rail.
+            It closes the page the way the poster's end card closes the index. */}
+        <section id="education" className="col mt-32 pb-4 text-center">
           <div className="hair" />
-          <div className="mt-6 grid grid-cols-[132px_1fr] gap-x-8 gap-y-3 max-sm:grid-cols-1">
-            <p className="mono mt-2">{education.year}</p>
-            <div>
-              <h2 className="serif m-0 text-[28px] leading-tight">{education.school}</h2>
-              <p className="mt-2 text-[15px] text-[var(--ink-2)]">{education.degree}</p>
-              <p className="mt-1 text-[15px] text-[var(--mute)]">Thesis: {education.thesis}</p>
-            </div>
-          </div>
+          <p className="mono mt-9">Education</p>
+          <h2 className="serif mt-5 text-[26px] leading-tight">{education.school}</h2>
+          <p className="mt-2 text-[15px] text-[var(--ink-2)]">
+            {education.degree}, {education.year}
+          </p>
+          <p className="mx-auto mt-5 max-w-[54ch] text-[14.5px] leading-[1.55] text-[var(--mute)]">
+            Thesis: {education.thesis.line}{" "}
+            <a href={education.thesis.href} className="mono whitespace-nowrap" target="_blank" rel="noreferrer">
+              Paper
+            </a>
+          </p>
         </section>
+
       </main>
     </>
   );
