@@ -6,7 +6,7 @@ export type Employer = {
   name: string;
   short: string; // wordmark text when there is no logo file
   logo?: string; // PNG under /public; falls back to the wordmark when the file is missing
-  logoTreat?: "white" | "invert"; // white: single-colour mark to pure white; invert: colourful seal to light line-art
+  logoTreat?: "white" | "invert"; // white: every opaque pixel to white; invert: solid multi-tone mark to light line-art
   location: string;
   roles: Role[];
 };
@@ -77,7 +77,7 @@ export const employers: Employer[] = [
     name: "Diliman Learning Resource Center",
     short: "DLRC",
     logo: "/logos/dlrc.png",
-    logoTreat: "invert",
+    logoTreat: "white",
     location: "Quezon City, PH",
     roles: [{ title: "Software Engineer Intern", type: "Internship", start: "Jun 2024", end: "Jul 2024", bullets: [] }],
   },

@@ -3,8 +3,11 @@ import path from "node:path";
 import Image from "next/image";
 import { employers } from "@/content/experience";
 
-// Monochrome treatments. "white" flattens a single-colour mark to pure white; "invert" turns a colourful seal into light line-art.
-const TREAT = { white: "[filter:brightness(0)_invert(1)]", invert: "[filter:grayscale(1)_invert(1)_contrast(1.4)_brightness(1.15)]" } as const;
+// Monochrome treatments. "white" flattens every opaque pixel to white (marks and line-art seals on a transparent ground); "invert" turns a solid, multi-tone mark into light line-art.
+const TREAT = {
+  white: "[filter:brightness(0)_invert(1)]",
+  invert: "[filter:grayscale(1)_invert(1)_contrast(1.4)_brightness(1.15)]",
+} as const;
 
 // Employers as logos when the file exists under /public, as mono wordmarks when it doesn't.
 export function LogoStrip() {

@@ -38,7 +38,7 @@ Rules kept by hand, from PRODUCT.md: no client names for private work; the AI SD
 
 ## 5. What Wilson supplies
 
-- Logos are in place as PNG in `public/logos/` (`thinking-machines.png`, `fit-senpai.png`, `dlrc.png`, `dost-asti.png`), supplied 2026-09-06. Replace a file to update a logo; a missing file falls back to the wordmark. Rendering is monochrome via CSS: single-colour marks are flattened to white, colourful seals are inverted grayscale. Casper Studios gets one entry plus one file when it starts.
+- Logos are in place as PNG in `public/logos/` (`thinking-machines.png`, `fit-senpai.png`, `dlrc.png`, `dost-asti.png`), supplied 2026-09-06. Replace a file to update a logo; a missing file falls back to the wordmark. Files are cropped to their opaque bounds so every mark fills its 36px box. Rendering is monochrome via CSS: marks and line-art seals on a transparent ground are flattened to white; the solid DOST-ASTI mark is inverted grayscale. Casper Studios gets one entry plus one file when it starts.
 - One sentence for the DLRC internship.
 - Stills and a second After-hours video, as before.
 
