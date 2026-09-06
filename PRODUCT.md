@@ -55,7 +55,7 @@ It exists to prove his AI work is production-grade: deployed, used by real peopl
 
 - Name: Wilson De Torres. Mark: WDT. Domain: wilsondetorres.com. Pronouns he/him.
 - Voice: direct, short, funny, occasionally blunt in a Filipino way. No fluff, no buzzwords, no fake humility. Professional but not corporate. Cringe-sensitive: when in doubt, cut.
-- Volunteered binding visual constraint, recorded without expansion: dark but not pure black (warm charcoal chosen 2026-09-05), minimal, generous negative space, good animation and visuals. Narrow centered text column with wider break-out media frames. Warm paper is a possible future light mode, not in v1. "Film grammar, not film": cinema as design language, not a video hero. Dislikes loud and generic.
+- Volunteered binding visual constraint, recorded without expansion: near-black #0c0c0b with a filmic treatment: warm key-light bloom at the top, fixed lens vignette, grain (changed from warm charcoal on 2026-09-05 after seeing the build, because the black cut bands contrasted too hard), minimal, generous negative space, good animation and visuals. Narrow centered text column with wider break-out media frames. Warm paper is a possible future light mode, not in v1. "Film grammar, not film": cinema as design language, not a video hero. Dislikes loud and generic.
 - Working hero line in his voice, pending a copy round: "I build AI that has to work on a Monday."
 
 ## Evidence on Hand

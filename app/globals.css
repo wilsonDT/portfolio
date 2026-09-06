@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --ground: #171716;
+  --ground: #0c0c0b;
   --ink: #ecebe6;
   --mute: #8f8e89;
   --line: #2a2a28;
   --line-2: #3a3a37;
-  --panel: #0f0f0e;
+  --panel: #121211;
   --black: #000;
   --ease: cubic-bezier(0.77, 0, 0.18, 1);
   color-scheme: dark;
 }
 
 html {
-  background: var(--ground);
+  /* Filmic ground: grain over a warm key-light bloom at the top of the page, falling to near-black */
+  background:
+    url("/grain.png") repeat,
+    radial-gradient(1400px 760px at 50% -120px, #1b1510 0%, rgba(27, 21, 16, 0) 70%),
+    var(--ground);
 }
 
 body {
-  background: url("/grain.png") repeat, var(--ground);
+  position: relative;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 300;
@@ -286,4 +290,19 @@ html.js [data-reveal-frame].in .still {
     flex-basis: 22px;
     transform: rotate(90deg);
   }
+}
+
+/* Lens vignette: fixed to the viewport, painted beneath content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* Scene cut: a dip to black that fades in and out of the page instead of a hard slab */
+.cut-band {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--black) 32%, var(--black) 68%, rgba(0, 0, 0, 0) 100%);
 }

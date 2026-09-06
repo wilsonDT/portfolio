@@ -19,7 +19,7 @@ Goals, in priority order: credibility and a brand that can grow for a career, th
 | Cinema level | Film grammar, not film. No video hero. Videos only in After hours |
 | Hero framing | Title card (option A), rebuilt in a narrow column |
 | Layout | 620px text column, media frames break out to 800px |
-| Ground | Warm charcoal `#171716`. Warm paper is a possible future light theme, not v1 |
+| Ground | Near-black `#0c0c0b` with a filmic gradient and vignette. Warm paper is a possible future light theme, not v1 |
 | Type | EB Garamond titles and big numbers, Geist body and UI, JetBrains Mono slates. No italics |
 | Documentary devices | Lower-third name card, subtitles inside frames, archival captions on frames |
 | Redaction | Black bars over confidential client names |
@@ -72,12 +72,12 @@ Same for all four, depth varies.
 
 | Token | Value | Use |
 |---|---|---|
-| `--ground` | `#171716` | page background |
+| `--ground` | `#0c0c0b` | page background, under a warm key-light bloom at the page top and a fixed lens vignette (changed from `#171716` after the first build; the black cut bands contrasted too hard) |
 | `--ink` | `#ecebe6` | primary text |
 | `--mute` | `#8f8e89` | secondary text, slates, captions (5.5:1 on ground, passes AA) |
 | `--line` | `#2a2a28` | hairlines |
 | `--line-2` | `#3a3a37` | borders on marks and nodes |
-| `--panel` | `#0f0f0e` | diagram panel background |
+| `--panel` | `#121211` | diagram panel background |
 | `--black` | `#000000` | letterbox bars, redaction bars, cut bands, cut overlay. Nowhere else |
 
 All tokens are CSS custom properties on `:root` so a second theme (warm paper) can be added later by redefining them.

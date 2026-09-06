@@ -25,7 +25,7 @@ export async function ogCard({ slate, title, footer }: { slate: string; title: s
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "56px 64px",
-          background: "#171716",
+          background: "linear-gradient(180deg, #17120d 0%, #0c0c0b 55%)",
           color: "#ecebe6",
         }}
       >
