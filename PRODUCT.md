@@ -67,7 +67,8 @@ It exists to prove his AI work is production-grade: deployed, used by real peopl
 - Public stories: https://stories.thinkingmachin.es/nst-apparel-ai-purchase-order-automation/ and https://stories.thinkingmachin.es/onepuhunan-agentic-ai-training-microfinance/ (client quotes there may be cited with attribution).
 - Live side projects: https://resume-roaster-ph.vercel.app and https://rice-leaf-detection.vercel.app
 - Video sample: "Notes from Bangkok | DJI Osmo Pocket 4P", https://www.youtube.com/watch?v=KRr7f29RlJQ
-- Not yet supplied, do not fabricate: portrait or headshot for the site, graded stills or frame grabs, digital design samples, descriptive copy for anonymized engagements beyond the resume bullets, testimonials.
+- Supplied 2026-09-06: the key-art still (an observation deck, Wilson small and turned away), shipped at public/key-art/observation-deck.jpg with its origin embedded; the 3840x2160 source stays outside the repo.
+- Not yet supplied, do not fabricate: portrait or headshot for the site, graded stills for the featured engagements, digital design samples, descriptive copy for anonymized engagements beyond the resume bullets, testimonials.
 
 ## Product Principles
 
