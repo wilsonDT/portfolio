@@ -1,23 +1,25 @@
+import Link from "next/link";
 import { CopyEmail } from "@/components/CopyEmail";
 import { CutBand } from "@/components/CutBand";
-import { DossierCard } from "@/components/DossierCard";
-import { DossierRow } from "@/components/DossierRow";
+import { LogoStrip } from "@/components/LogoStrip";
 import { LowerThird } from "@/components/LowerThird";
 import { SiteNav } from "@/components/SiteNav";
 import { Slate } from "@/components/Slate";
 import { VideoFacade } from "@/components/VideoFacade";
+import { WorkCard } from "@/components/WorkCard";
 import { afterHours } from "@/content/after-hours";
+import { employers } from "@/content/experience";
 import { site } from "@/content/site";
-import { dossiers } from "@/content/work";
+import { featured, restOfWork } from "@/content/work";
 
 export default function Page() {
-  const featured = dossiers.filter((d) => d.featured);
-  const rest = dossiers.filter((d) => !d.featured);
+  const current = employers[0];
+  const role = current.roles[0];
   return (
     <>
       <SiteNav />
       <main id="main">
-        <section className="col pt-[88px] pb-32" aria-labelledby="hero">
+        <section className="col pt-[88px] pb-28" aria-labelledby="hero">
           <Slate left="00 / Cold open" right={`${site.place}, PH`} reveal />
           <h1
             id="hero"
@@ -29,32 +31,41 @@ export default function Page() {
           </h1>
           <p className="mt-5 max-w-[46ch] text-[15px] leading-relaxed text-[var(--mute)]">{site.sub}</p>
           <LowerThird name={site.name} role={`${site.role} · ${site.org} · ${site.place}`} />
+          <LogoStrip />
         </section>
 
         <section id="work">
           <CutBand label="01 / Work" />
-          <div className="space-y-24 pt-24">
-            {featured.map((d, i) => (
-              <DossierCard key={d.slug} d={d} i={i} />
+          <div className="col pt-16" data-reveal="">
+            <div className="flex items-baseline justify-between gap-4">
+              <h2 className="serif m-0 text-[26px] leading-tight">{current.short}</h2>
+              <Link href={`/experience#${current.slug}`} className="mono no-underline hover:text-[var(--ink)]">
+                Experience →
+              </Link>
+            </div>
+            <p className="mono mt-1.5">
+              {role.title} · {current.roles[current.roles.length - 1].start} – {role.end.toLowerCase()}
+            </p>
+          </div>
+          <div className="space-y-20 pt-14">
+            {featured.map((w, i) => (
+              <WorkCard key={w.index} w={w} i={i} />
             ))}
           </div>
-          <div className="col mt-24">
-            {rest.map((d, i) => (
-              <DossierRow key={d.slug} d={d} i={i} />
-            ))}
-            {site.mentions.map((m) => (
-              <div key={m.title} className="border-t border-[var(--line)] py-6">
-                <Slate left="Also" right="No page" />
-                <h3 className="serif mt-2.5 text-[22px] leading-tight">{m.title}</h3>
-                <p className="mt-1.5 max-w-[60ch] text-[15px] text-[#cfcec8]">{m.line}</p>
-              </div>
-            ))}
+          <div className="col mt-16">
+            <div className="hair" />
+            <p className="mt-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 text-[15px] text-[#cfcec8]">
+              <span>{restOfWork.line}</span>
+              <Link href={`/experience#${current.slug}`} className="mono no-underline hover:text-[var(--ink)]">
+                {restOfWork.linkLabel} →
+              </Link>
+            </p>
           </div>
         </section>
 
-        <section id="side-projects" className="pt-32">
+        <section id="side-projects" className="pt-28">
           <CutBand label={`02 / ${site.sideProjectsLabel}`} />
-          <div className="col pt-24">
+          <div className="col pt-16">
             {site.sideProjects.map((p) => (
               <article key={p.title} className="border-t border-[var(--line)] py-6">
                 <a href={p.href} className="block no-underline" target="_blank" rel="noreferrer">
@@ -67,21 +78,18 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="after-hours" className="pt-32">
+        <section id="after-hours" className="pt-28">
           <CutBand label="03 / After hours" />
-          <div className="col pt-24">
-            <p className="max-w-[60ch] text-[15px] text-[#cfcec8]">{afterHours.intro}</p>
-          </div>
-          <div className="mt-10 space-y-14">
+          <div className="space-y-14 pt-16">
             {afterHours.videos.map((v, i) => (
               <VideoFacade key={v.id} v={v} i={i} />
             ))}
           </div>
         </section>
 
-        <section id="contact" className="pt-32 pb-24">
+        <section id="contact" className="pt-28 pb-24">
           <CutBand label="04 / End credits" />
-          <div className="col pt-24">
+          <div className="col pt-16">
             <Slate left="Email" reveal />
             <div className="mt-3">
               <CopyEmail email={site.email} />

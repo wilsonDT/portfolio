@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 
-export function SiteNav({ back = false }: { back?: boolean }) {
+// One nav for every page. Anchors are absolute so they work from /experience too.
+export function SiteNav() {
   return (
     <nav className="col flex items-center justify-between pt-7" aria-label="Site">
       <Link href="/" className="inline-flex items-center gap-2.5 no-underline">
@@ -10,17 +11,12 @@ export function SiteNav({ back = false }: { back?: boolean }) {
         </span>
         <span className="text-[13px] max-sm:hidden">{site.name}</span>
       </Link>
-      {back ? (
-        <Link href="/" className="mono no-underline hover:text-[var(--ink)]">
-          Index
-        </Link>
-      ) : (
-        <ul className="mono flex gap-6 whitespace-nowrap max-sm:gap-4">
-          <li><a href="#work" className="no-underline hover:text-[var(--ink)]">Work</a></li>
-          <li><a href="#after-hours" className="no-underline hover:text-[var(--ink)]">After hours</a></li>
-          <li><a href="#contact" className="no-underline hover:text-[var(--ink)]">Contact</a></li>
-        </ul>
-      )}
+      <ul className="mono flex gap-6 whitespace-nowrap max-sm:gap-4">
+        <li><Link href="/#work" className="no-underline hover:text-[var(--ink)]">Work</Link></li>
+        <li><Link href="/experience" className="no-underline hover:text-[var(--ink)]">Experience</Link></li>
+        <li><Link href="/#after-hours" className="no-underline hover:text-[var(--ink)]">After hours</Link></li>
+        <li><Link href="/#contact" className="no-underline hover:text-[var(--ink)]">Contact</Link></li>
+      </ul>
     </nav>
   );
 }

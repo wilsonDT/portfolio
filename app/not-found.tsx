@@ -4,7 +4,7 @@ import { SiteNav } from "@/components/SiteNav";
 export default function NotFound() {
   return (
     <>
-      <SiteNav back />
+      <SiteNav />
       <main id="main" className="col pt-[88px] pb-32">
         <p className="mono">404</p>
         <h1 className="serif mt-3 text-[clamp(40px,6vw,58px)] leading-none">Scene missing.</h1>
