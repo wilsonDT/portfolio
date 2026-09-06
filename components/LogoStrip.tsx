@@ -11,7 +11,7 @@ export function LogoStrip() {
   return (
     <div className="mt-16" data-reveal="" data-i={2}>
       <p className="mono">Worked at</p>
-      <ul className="mt-5 flex flex-wrap items-center gap-x-10 gap-y-4">
+      <ul className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3">
         {employers.map((e) => {
           const hasLogo = !!e.logo && fs.existsSync(path.join(process.cwd(), "public", e.logo));
           return (
