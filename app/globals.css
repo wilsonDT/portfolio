@@ -279,61 +279,69 @@ html.js [data-reveal-frame].in .still {
   letter-spacing: -0.015em;
 }
 
-/* The title card: "I build AI" holds on its own line, the tail rolls under it like a departure board.
-   Stacking them is what keeps the centring honest: the roll's window has to be one fixed width (the widest tail)
-   or the text would slide sideways as it turns, and a fixed-width window can't sit centred beside a stem. On its
-   own line the window spans the column and every tail centres in it. The track carries the three tails plus a
-   repeat of the first, so the roll comes to rest on the frame it started from and the loop never jumps back. */
+/* The title card: "I build AI products" holds on its own line, the tails change under it.
+   Stacking the tails on one line is what keeps the centring honest — a fixed-width window can't sit
+   centred beside a stem, and on its own line every tail centres in the column. They are stacked
+   absolutely rather than rolled through a clipped window: at this leading a tail's ascenders sit
+   about three pixels under the stem's descenders, so anything travelling upward crosses "products"
+   on its way out. Instead each tail rises into place from below, where there is only empty page,
+   holds, and leaves by fading where it stands. Nothing is clipped and nothing meets the stem. */
 .title-stem {
   display: block;
 }
 
 .title-roll {
-  /* One line of the title, plus the bleed a serif needs on both sides: EB Garamond's ascenders and descenders
-     stand outside the line box, so a window cut to exactly one line shaves the resting tail and lets the next
-     one show through above it. The window carries the bleed and gives it straight back as negative margin, so
-     the two lines sit as tight as they look. Slides are spaced four bleeds apart: a neighbour never reaches in. */
-  --line: 1.05em;
-  --bleed: 0.25em;
+  --line: 1.05em; /* one line of the title; the tails share it */
   display: block;
-  height: calc(var(--line) + 2 * var(--bleed));
-  margin-block: calc(-1 * var(--bleed));
-  overflow: hidden;
-}
-
-.title-track {
-  display: block;
-  margin-top: calc(-1 * var(--bleed)); /* centres the resting slide in the window */
-  animation: title-roll 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  position: relative;
+  height: var(--line);
 }
 
 .title-slide {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(var(--line) + 4 * var(--bleed));
+  opacity: 0;
+  animation: title-tail 15s cubic-bezier(0.16, 1, 0.3, 1) infinite both;
 }
 
-@keyframes title-roll {
-  0%,
-  19% {
-    transform: translateY(0);
+/* Held still — no JS, or no appetite for motion — the first tail is the one the heading reads. */
+.title-slide:first-child {
+  opacity: 1;
+}
+
+/* A third of the loop each, so the three tails tile it exactly: one leaves as the next arrives. */
+.title-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.title-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+
+@keyframes title-tail {
+  0% {
+    opacity: 0;
+    transform: translateY(0.3em);
   }
-  25%,
-  44% {
-    transform: translateY(-25%);
+  5%,
+  30% {
+    opacity: 1;
+    transform: none;
+    /* The tail leaves on a straight fade, so it is gone at the moment the next one starts rising and
+       the line is never left blank. Only the rise takes the poster's ease. */
+    animation-timing-function: linear;
   }
-  50%,
-  69% {
-    transform: translateY(-50%);
-  }
-  75%,
+  33.333%,
   100% {
-    transform: translateY(-75%);
+    opacity: 0;
+    transform: none;
   }
 }
 
-/* Below about 300px the longest tail no longer fits on one line. Two lines to wrap into; the window and the slides follow from it. */
+/* Below about 300px the longest tail no longer fits on one line. Two lines to wrap into; the slides follow from it. */
 @media (max-width: 300px) {
   .title-roll {
     --line: 2.1em;
