@@ -114,6 +114,7 @@ export const employers: Employer[] = [
 
 export const education = {
   school: "University of the Philippines Diliman",
+  href: "https://upd.edu.ph/",
   degree: "BS Computer Science, magna cum laude",
   year: "2025",
   thesis: {
