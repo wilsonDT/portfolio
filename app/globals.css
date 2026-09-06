@@ -226,7 +226,7 @@ html.js [data-reveal-frame].in .still {
 .poster {
   position: relative;
   display: grid;
-  align-content: end;
+  grid-template-rows: 58svh auto 1fr;
   min-height: 100svh;
   margin-top: -3rem;
   padding-bottom: clamp(28px, 5vh, 52px);
@@ -241,21 +241,35 @@ html.js [data-reveal-frame].in .still {
 .scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgb(10 10 10 / 0.72) 0%,
-    rgb(10 10 10 / 0) 22%,
-    rgb(10 10 10 / 0) 40%,
-    rgb(10 10 10 / 0.84) 74%,
-    var(--ground) 100%
-  );
+  background:
+    url("/grain.png") repeat,
+    linear-gradient(
+      to bottom,
+      rgb(10 10 10 / 0.9) 0%,
+      rgb(10 10 10 / 0.9) 6%,
+      rgb(10 10 10 / 0) 32%,
+      rgb(10 10 10 / 0) 40%,
+      rgb(10 10 10 / 0.88) 70%,
+      var(--ground) 100%
+    );
 }
 
-.poster-copy {
+.poster-copy,
+.poster-foot {
   position: relative;
   width: min(920px, 92%);
   margin-inline: auto;
   text-align: center;
+}
+
+.poster-copy {
+  grid-row: 2;
+}
+
+.poster-foot {
+  grid-row: 3;
+  align-self: end;
+  padding-top: 40px;
 }
 
 .title {
@@ -273,10 +287,12 @@ html.js [data-reveal-frame].in .still {
   column-gap: 1.6em;
   row-gap: 0.15em;
   margin: 26px auto 0;
-  font-size: 10px;
+  padding: 0;
+  list-style: none;
+  font-size: 11px;
   font-weight: 500;
-  line-height: 1.9;
-  letter-spacing: 0.14em;
+  line-height: 1.85;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mute);
   font-variant-numeric: tabular-nums;
@@ -287,8 +303,9 @@ html.js [data-reveal-frame].in .still {
   flex-basis: 100%;
 }
 
+/* Star billing: the name alone is set wider */
 .billing .b-name {
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: 0.26em;
   color: var(--ink);
 }
@@ -298,19 +315,8 @@ html.js [data-reveal-frame].in .still {
 }
 
 .billing .b-value {
-  font-size: 12.5px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
   color: var(--ink-2);
-}
-
-.billing .b-sep {
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  margin: 0 0.4em 2px;
-  border-radius: 50%;
-  background: currentColor;
-  vertical-align: middle;
 }
 
 /* The poster's one moment: the grade lands on the picture while the title's tracking settles, then the credits rise. Only with JS; the still frame is complete on its own. */

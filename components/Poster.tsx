@@ -24,19 +24,21 @@ export function Poster() {
           {site.hero}
         </h1>
 
-        <p className="billing">
-          <span className="b-name">{site.name}</span>
-          <span className="b-line">
-            {site.role} <span className="b-sep" /> {site.org}
-          </span>
+        <ul className="billing" aria-label="Credits">
+          <li className="b-name">{site.name}</li>
+          <li className="b-line">
+            {site.role} · {site.org}
+          </li>
           {site.stats.map((s) => (
-            <span key={s.label} className="b-fact">
+            <li key={s.label} className="b-fact">
               <span className="b-value">{s.value}</span> {s.label}
-            </span>
+            </li>
           ))}
-        </p>
+        </ul>
+      </div>
 
-        <LogoStrip h={26} center className="rise mt-12" />
+      <div className="poster-foot">
+        <LogoStrip h={32} center className="rise" />
       </div>
     </section>
   );
