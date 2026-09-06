@@ -5,7 +5,8 @@ export type Employer = {
   slug: string;
   name: string;
   short: string; // wordmark text when there is no logo file
-  logo?: string; // path under /public, e.g. "/logos/thinking-machines.svg"
+  logo?: string; // PNG under /public; falls back to the wordmark when the file is missing
+  logoTreat?: "white" | "invert"; // white: single-colour mark to pure white; invert: colourful seal to light line-art
   location: string;
   roles: Role[];
 };
@@ -18,6 +19,7 @@ export const employers: Employer[] = [
     slug: "thinking-machines",
     name: "Thinking Machines Data Science",
     short: "Thinking Machines",
+    logo: "/logos/thinking-machines.png",
     location: "Taguig City, PH",
     roles: [
       {
@@ -57,6 +59,8 @@ export const employers: Employer[] = [
     slug: "fit-senpai",
     name: "Fit Senpai",
     short: "Fit Senpai",
+    logo: "/logos/fit-senpai.png",
+    logoTreat: "white",
     location: "Remote",
     roles: [
       {
@@ -72,6 +76,8 @@ export const employers: Employer[] = [
     slug: "dlrc",
     name: "Diliman Learning Resource Center",
     short: "DLRC",
+    logo: "/logos/dlrc.png",
+    logoTreat: "invert",
     location: "Quezon City, PH",
     roles: [{ title: "Software Engineer Intern", type: "Internship", start: "Jun 2024", end: "Jul 2024", bullets: [] }],
   },
@@ -79,6 +85,8 @@ export const employers: Employer[] = [
     slug: "dost-asti",
     name: "DOST Advanced Science and Technology Institute",
     short: "DOST-ASTI",
+    logo: "/logos/dost-asti.png",
+    logoTreat: "invert",
     location: "Quezon City, PH",
     roles: [
       {

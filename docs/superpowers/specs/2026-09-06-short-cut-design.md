@@ -16,7 +16,7 @@ Wilson decided on 2026-09-06 to stop writing case studies for client work. Dossi
 | Dossiers | Removed. `/work/[slug]`, its content, and its components are deleted. No redirects: nothing was live. |
 | Index scope | Short. Roughly three screens: hero with logo strip, two featured public engagements, side projects, after hours, end credits. |
 | Featured work | Only public, linkable engagements: Mr. Bot (NST Apparel) and the training simulator (OnePuhunan). Each card links to the Thinking Machines story, carries one public figure, and keeps its letterboxed frame for the stills. |
-| Everything else | Lives on `/experience` as bullets under the role, the way the resume does it. The index closes the Work scene with one line in Wilson's words pointing there. |
+| Everything else | Lives on `/experience` as bullets under the role, the way the resume does it. The index closes the Work scene with a plain pointer, "Everything else is in Experience", and says nothing about NDAs anywhere on the site. |
 | Experience page | New route. Employers newest first, roles with dates, resume bullets as short prose, no skill tags, education at the end. Same skin. |
 | Logo strip | Under the lower third: every employer including internships, read from the same list as the experience page. Logo file when supplied, mono wordmark until then. |
 | Nav | One nav everywhere: Work · Experience · After hours · Contact, absolute anchors. |
@@ -38,9 +38,8 @@ Rules kept by hand, from PRODUCT.md: no client names for private work; the AI SD
 
 ## 5. What Wilson supplies
 
-- Logo files in `public/logos/`, SVG preferred, then set `logo` on the employer.
+- Logos are in place as PNG in `public/logos/` (`thinking-machines.png`, `fit-senpai.png`, `dlrc.png`, `dost-asti.png`), supplied 2026-09-06. Replace a file to update a logo; a missing file falls back to the wordmark. Rendering is monochrome via CSS: single-colour marks are flattened to white, colourful seals are inverted grayscale. Casper Studios gets one entry plus one file when it starts.
 - One sentence for the DLRC internship.
-- His wording for the closing Work line, currently "Two are public. The rest is under NDA."
 - Stills and a second After-hours video, as before.
 
 ## 6. Verification

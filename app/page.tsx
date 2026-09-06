@@ -54,9 +54,9 @@ export default function Page() {
           </div>
           <div className="col mt-16">
             <div className="hair" />
-            <p className="mt-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 text-[15px] text-[#cfcec8]">
-              <span>{restOfWork.line}</span>
-              <Link href={`/experience#${current.slug}`} className="mono no-underline hover:text-[var(--ink)]">
+            <p className="mt-5 text-[15px] text-[#cfcec8]">
+              {restOfWork.line}{" "}
+              <Link href={`/experience#${current.slug}`} className="text-[var(--ink)]">
                 {restOfWork.linkLabel} →
               </Link>
             </p>

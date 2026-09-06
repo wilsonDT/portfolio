@@ -43,5 +43,5 @@ export const featured: Featured[] = [
   },
 ];
 
-// Placeholder cut from Wilson's own sentence in chat; he rewords it.
-export const restOfWork = { line: "Two are public. The rest is under NDA.", linkLabel: "Experience" };
+// Closes the Work scene: a pointer to the full record, nothing about why the rest isn't here.
+export const restOfWork = { line: "Everything else is in", linkLabel: "Experience" };
