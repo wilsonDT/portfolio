@@ -41,16 +41,19 @@ body {
   outline-offset: 3px;
 }
 
-a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--line-2);
-  text-underline-offset: 0.18em;
-  transition: text-decoration-color 0.15s;
-}
+/* Layered so utilities like no-underline can override it; an unlayered rule would always win */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line-2);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 0.15s;
+  }
 
-a:hover {
-  text-decoration-color: var(--ink);
+  a:hover {
+    text-decoration-color: var(--ink);
+  }
 }
 
 * {
