@@ -286,7 +286,7 @@ html.js [data-reveal-frame].in .still {
   justify-content: center;
   column-gap: 1.6em;
   row-gap: 0.15em;
-  margin: 26px auto 0;
+  margin: 30px auto 0;
   padding: 0;
   list-style: none;
   font-size: 11px;
@@ -303,10 +303,11 @@ html.js [data-reveal-frame].in .still {
   flex-basis: 100%;
 }
 
-/* Star billing: the name alone is set wider */
+/* Star billing: the name alone is set wider and larger, about a third of the title */
 .billing .b-name {
-  font-size: 12.5px;
-  letter-spacing: 0.26em;
+  margin-bottom: 0.35em;
+  font-size: clamp(14px, 1.2vw, 17.5px);
+  letter-spacing: 0.28em;
   color: var(--ink);
 }
 
