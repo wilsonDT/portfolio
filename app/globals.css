@@ -279,6 +279,67 @@ html.js [data-reveal-frame].in .still {
   letter-spacing: -0.015em;
 }
 
+/* The title card: "I build AI" holds on its own line, the tail rolls under it like a departure board.
+   Stacking them is what keeps the centring honest: the roll's window has to be one fixed width (the widest tail)
+   or the text would slide sideways as it turns, and a fixed-width window can't sit centred beside a stem. On its
+   own line the window spans the column and every tail centres in it. The track carries the three tails plus a
+   repeat of the first, so the roll comes to rest on the frame it started from and the loop never jumps back. */
+.title-stem {
+  display: block;
+}
+
+.title-roll {
+  /* One line of the title, plus the bleed a serif needs on both sides: EB Garamond's ascenders and descenders
+     stand outside the line box, so a window cut to exactly one line shaves the resting tail and lets the next
+     one show through above it. The window carries the bleed and gives it straight back as negative margin, so
+     the two lines sit as tight as they look. Slides are spaced four bleeds apart: a neighbour never reaches in. */
+  --line: 1.05em;
+  --bleed: 0.25em;
+  display: block;
+  height: calc(var(--line) + 2 * var(--bleed));
+  margin-block: calc(-1 * var(--bleed));
+  overflow: hidden;
+}
+
+.title-track {
+  display: block;
+  margin-top: calc(-1 * var(--bleed)); /* centres the resting slide in the window */
+  animation: title-roll 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.title-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--line) + 4 * var(--bleed));
+}
+
+@keyframes title-roll {
+  0%,
+  19% {
+    transform: translateY(0);
+  }
+  25%,
+  44% {
+    transform: translateY(-25%);
+  }
+  50%,
+  69% {
+    transform: translateY(-50%);
+  }
+  75%,
+  100% {
+    transform: translateY(-75%);
+  }
+}
+
+/* Below about 300px the longest tail no longer fits on one line. Two lines to wrap into; the window and the slides follow from it. */
+@media (max-width: 300px) {
+  .title-roll {
+    --line: 2.1em;
+  }
+}
+
 /* Billing block: the credit lines of a poster, set with real facts. Labels small, values a step larger, the name widest. */
 .billing {
   display: flex;
@@ -506,5 +567,109 @@ html.js .rise {
 
   html.js .sheet.in .sheet-text {
     animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+}
+
+/* After hours. One film runs in the frame above; the rest wait in a rail that scrolls sideways, graded back until picked. */
+.reel {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
+
+.reel > li {
+  flex: 0 0 clamp(164px, 24vw, 206px);
+  scroll-snap-align: start;
+}
+
+.reel-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.reel-still {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--panel);
+  filter: saturate(0.3) brightness(0.62);
+  transition: filter 0.25s;
+}
+
+.reel-name {
+  display: block;
+  margin-top: 9px;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--mute);
+  transition: color 0.2s;
+}
+
+.reel-card:hover .reel-still,
+.reel-card:focus-visible .reel-still,
+.reel-card[aria-current] .reel-still {
+  filter: none;
+}
+
+.reel-card:hover .reel-name,
+.reel-card:focus-visible .reel-name,
+.reel-card[aria-current] .reel-name {
+  color: var(--ink);
+}
+
+.reel-card .mono {
+  margin-top: 4px;
+}
+
+/* End credits: the label flush right against its credit, the way a closing crawl sets them. */
+.credits {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  column-gap: 32px;
+  row-gap: 26px;
+  align-items: baseline;
+  margin: 0;
+}
+
+.credits dt {
+  text-align: right;
+}
+
+.credits dd {
+  margin: 0;
+}
+
+/* The page closes on the name the way the poster opened on it. */
+.end-name {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .credits {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+  }
+
+  .credits dt {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .credits dt:first-child {
+    margin-top: 0;
   }
 }

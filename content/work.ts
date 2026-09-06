@@ -23,7 +23,7 @@ export const featured: Featured[] = [
     line: "A purchase-order assistant you CC. It reads the thread, chases suppliers, pulls the documents, and flags only what needs a human.",
     did: "Led delivery, end to end.",
     href: "https://stories.thinkingmachin.es/nst-apparel-ai-purchase-order-automation/",
-    figure: { value: "350,000", label: "automated workflow events" },
+    figure: { value: "350,000+", label: "automated workflow events" },
     frame: { src: null, tone: "warm", subtitle: "If it's a purchase order, CC Mr. Bot." },
   },
   {
@@ -33,9 +33,9 @@ export const featured: Featured[] = [
     industry: "Microfinance",
     year: "2025",
     line: "An AI roleplay coach for frontline staff: personas that push back, a feedback agent, a knowledge assistant. Shipped at OnePuhunan as Pocket Branch Manager.",
-    did: "Built the reusable product. The OnePuhunan rollout was tailored by the project team.",
+    did: "Built the core simulation product.",
     href: "https://stories.thinkingmachin.es/onepuhunan-agentic-ai-training-microfinance/",
-    figure: { value: "4.2", label: "officer confidence out of 5, up from 3.8" },
+    figure: { value: "60×", label: "faster knowledge retrieval, 16 minutes to 15.84 seconds" },
     frame: {
       src: null,
       tone: "cool",

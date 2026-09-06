@@ -17,7 +17,7 @@ export function Frame({ ratio = "2.39", caption, subtitle, reveal, i, children }
         className={`still relative overflow-hidden bg-[var(--panel)] ${ratio === "2.39" ? "aspect-[239/100] max-sm:aspect-video" : "aspect-video"}`}
       >
         {children}
-        <span className="mono absolute left-[14px] top-[12px] z-[1] text-[#bdbdbd]">{caption}</span>
+        <span className="mono absolute left-[14px] top-[12px] z-[1] text-[#bdbdbd] [text-shadow:0_1px_2px_rgba(0,0,0,.85)]">{caption}</span>
         {subtitle ? (
           <figcaption className="absolute inset-x-0 bottom-[22px] z-[1] px-4 text-center text-[15px] text-[#f2f0ea] [text-shadow:0_1px_2px_rgba(0,0,0,.9)]">
             <span className="box-decoration-clone bg-black/35 px-2 py-[3px]">{subtitle}</span>

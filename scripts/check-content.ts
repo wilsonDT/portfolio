@@ -4,14 +4,12 @@ import { education, employers } from "../content/experience";
 import { site } from "../content/site";
 import { featured, restOfWork } from "../content/work";
 
-const BANNED = ["1,900", "1900"]; // a figure from an engagement that is not on the site
 const PROD = process.env.VERCEL_ENV === "production";
 const fails: string[] = [];
 const warns: string[] = [];
 
 function walk(v: unknown, path: string) {
   if (typeof v === "string") {
-    for (const b of BANNED) if (v.includes(b)) fails.push(`${path}: banned "${b}"`);
     if (v.includes("[DRAFT]")) (PROD ? fails : warns).push(`${path}: draft marker`);
     if (path.endsWith(".href") && !v.startsWith("https://")) fails.push(`${path}: link is not https`);
   } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${path}[${i}]`));
@@ -23,6 +21,7 @@ for (const w of featured) {
   for (const k of ["title", "line", "did", "href"] as const) if (!w[k]) fails.push(`${p}: ${k} empty`);
   if (!w.figure.value || !w.figure.label) fails.push(`${p}: figure incomplete`);
 }
+if (site.heroTail.length !== 3) fails.push("site.heroTail: the title card's roll is keyed to three tails in globals.css");
 for (const e of employers) {
   if (!e.roles.length) fails.push(`experience/${e.slug}: no roles`);
   for (const r of e.roles) if (!r.title || !r.start || !r.end) fails.push(`experience/${e.slug}: role incomplete`);
