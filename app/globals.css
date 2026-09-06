@@ -321,7 +321,7 @@ html.js [data-reveal-frame].in .still {
 }
 
 /* The poster's one moment: the grade lands on the picture while the title's tracking settles, then the credits rise. Only with JS; the still frame is complete on its own. */
-html.js .art-img {
+html.js .poster .art-img {
   animation: grade 1.2s ease-out both;
 }
 
@@ -368,92 +368,143 @@ html.js .rise {
   }
 }
 
-/* Featured one-sheets. Each engagement is a typographic poster: no picture, the copy carries it. A pull quote heads the sheet, the number is the title with its label beside it, the product is the star billing, then one line, one credit line, and the story's host. */
-.sheet-link {
+/* Featured spreads. Each engagement is two columns across the break-out: the number huge on one side as the only display element, the copy left-aligned on the other. Odd entries mirror the columns. */
+.sheet {
   position: relative;
-  display: block;
-  width: min(920px, 92%);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  width: min(960px, 96%);
   margin-inline: auto;
-  padding-block: 8px;
-  text-align: center;
-  color: inherit;
 }
 
-/* Pull quote at the head of the sheet */
-.sheet-quote {
-  margin: 0 auto 30px;
-  max-width: 60ch;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  text-wrap: balance;
+.sheet--mirror {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
 
-/* The number is the title; its label sits beside it on the baseline and drops beneath on phones */
-.sheet-title {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  column-gap: 0.45em;
+.sheet--mirror .sheet-figure-block {
+  grid-column: 2;
+  text-align: right;
+}
+
+.sheet--mirror .sheet-text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sheet-figure-block {
   margin: 0;
 }
 
 .sheet-figure {
-  font-size: clamp(40px, 4vw, 56px);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  display: block;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
   font-variant-numeric: tabular-nums;
 }
 
 .sheet-figure-label {
-  font-size: 14px;
-  color: var(--ink-2);
+  display: block;
+  max-width: 24ch;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--mute);
 }
 
-.sheet-billing {
-  margin-top: 20px;
+.sheet--mirror .sheet-figure-label {
+  margin-left: auto;
 }
 
-.sheet-line {
-  max-width: 52ch;
-  margin: 2px auto 6px;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--ink-2);
-}
-
-.sheet-host {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  text-transform: none;
-  letter-spacing: 0.06em;
-  transition: color 0.2s;
-}
-
-.sheet-link:hover .sheet-host {
+/* The copy column: name as a small tracked line, then the one line, the credit, what he did, and the link */
+.sheet-name {
+  margin: 0;
+  padding-top: 0.55em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--ink);
 }
 
-/* A sheet rises once when it enters view, staggered like the poster's credits. Hidden start states apply only when motion is allowed and JS is present. */
+.sheet-line {
+  max-width: 46ch;
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.sheet-meta {
+  margin: 18px 0 0;
+}
+
+.sheet-did {
+  max-width: 52ch;
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* The story link keeps a short name; its box stretches over the spread so the whole spread is clickable */
+.sheet-host {
+  display: inline-block;
+  margin-top: 14px;
+  transition: color 0.2s;
+}
+
+.sheet-host::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sheet:hover .sheet-host,
+.sheet:focus-within .sheet-host {
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .sheet,
+  .sheet--mirror {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+    width: min(620px, 86%); /* on phones the spread follows the text column, not the break-out */
+  }
+
+  .sheet--mirror .sheet-figure-block {
+    grid-column: 1;
+    text-align: left;
+  }
+
+  .sheet--mirror .sheet-figure-label {
+    margin-left: 0;
+  }
+
+  .sheet--mirror .sheet-text {
+    grid-row: auto;
+  }
+
+  .sheet-name {
+    padding-top: 0;
+  }
+}
+
+/* A spread rises once when it enters view: the number first, the copy after. Hidden start states apply only when motion is allowed and JS is present. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .sheet[data-reveal-frame]:not(.in) .sheet-quote,
-  html.js .sheet[data-reveal-frame]:not(.in) .sheet-title,
-  html.js .sheet[data-reveal-frame]:not(.in) .sheet-billing {
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-figure-block,
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-text {
     opacity: 0;
   }
 
-  html.js .sheet.in .sheet-quote {
+  html.js .sheet.in .sheet-figure-block {
     animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  html.js .sheet.in .sheet-title {
+  html.js .sheet.in .sheet-text {
     animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-  }
-
-  html.js .sheet.in .sheet-billing {
-    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
   }
 }
