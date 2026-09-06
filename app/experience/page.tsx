@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { SiteNav } from "@/components/SiteNav";
 import { education, employers } from "@/content/experience";
+import { openGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Experience",
   description: "Roles at Thinking Machines, Fit Senpai, DLRC, and DOST-ASTI, newest first.",
+  alternates: { canonical: "/experience" },
+  openGraph: { ...openGraph, url: "/experience" },
 };
 
 const first = employers[employers.length - 1].roles.at(-1)!.start.slice(-4);

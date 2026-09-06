@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import { ImageResponse } from "next/og";
+import { site } from "@/content/site";
 
 export const ogSize = { width: 1200, height: 630 };
 
+// Shared by every page's metadata. Next replaces a page's openGraph wholesale, so each page spreads this and adds its own url.
+export const openGraph = { type: "website", siteName: site.name, locale: "en_US" } satisfies Metadata["openGraph"];
+
 // Google Fonts serves TTF to a client with no browser user agent; Satori needs TTF/OTF, not woff2.
-async function googleFont(family: string, text: string) {
+export async function googleFont(family: string, text: string) {
   const css = await (await fetch(`https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`)).text();
   const url = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/)?.[1];
   if (!url) throw new Error(`no font url for ${family}`);

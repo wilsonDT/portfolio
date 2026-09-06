@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Geist, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { openGraph } from "@/lib/og";
+import { site } from "@/content/site";
+import card from "./og.jpg";
 import "./globals.css";
 
 const serif = EB_Garamond({
@@ -30,7 +33,17 @@ export const metadata: Metadata = {
   },
   description:
     "AI engineer at Thinking Machines. Enterprise AI systems in production.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    ...openGraph,
+    url: "/",
+    // Turbopack skips the opengraph-image.alt.txt convention, so the card is wired here with its alt text. The hashed URL busts share caches when the card is re-rendered.
+    images: [{ url: card.src, width: card.width, height: card.height, type: "image/jpeg", alt: `${site.name}, ${site.role} · ${site.org}. ${site.heroStem} ${site.heroTail[0]}` }],
+  },
 };
+
+// Discord and Android tint their chrome with this.
+export const viewport: Viewport = { themeColor: "#0a0a0a" };
 
 export default function RootLayout({
   children,

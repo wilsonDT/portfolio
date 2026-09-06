@@ -1,4 +1,5 @@
 // Fails the build when content breaks a rule. Runs as `prebuild`.
+import { statSync } from "node:fs";
 import { afterHours } from "../content/after-hours";
 import { education, employers } from "../content/experience";
 import { site } from "../content/site";
@@ -26,6 +27,11 @@ for (const e of employers) {
   if (!e.roles.length) fails.push(`experience/${e.slug}: no roles`);
   for (const r of e.roles) if (!r.title || !r.start || !r.end) fails.push(`experience/${e.slug}: role incomplete`);
 }
+
+// The homepage share card is a still of the poster, rendered by `npm run og`. WhatsApp drops previews over about 300KB.
+const card = statSync("app/og.jpg", { throwIfNoEntry: false });
+if (!card) fails.push("app/og.jpg: missing, run `npm run og`");
+else if (card.size > 300_000) fails.push(`app/og.jpg: ${card.size} bytes, over the 300KB preview ceiling`);
 
 walk({ featured, restOfWork, employers, education, afterHours, site }, "content");
 

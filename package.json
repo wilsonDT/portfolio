@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "check": "tsx scripts/check-content.ts",
-    "prebuild": "tsx scripts/check-content.ts"
+    "prebuild": "tsx scripts/check-content.ts",
+    "og": "tsx scripts/og-keyart.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
