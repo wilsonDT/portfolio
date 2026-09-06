@@ -3,12 +3,19 @@ export const site = {
   mark: "WDT",
   role: "AI Engineer",
   org: "Thinking Machines",
-  place: "Makati",
   email: "detorres.wilson21@gmail.com",
   domain: "wilsondetorres.com",
   // Placeholder until Wilson sends his own hero sentences. This one is his LinkedIn line.
   hero: "I build AI products people trust.",
-  sub: "AI engineer at Thinking Machines, Makati. 0-to-1 AI systems for enterprise teams and client products.",
+  // Placeholder until Wilson writes his own. Assembled from his resume sentences, nothing added.
+  about:
+    "AI engineer at Thinking Machines. I ship production AI systems across automation, workforce training, voice, enterprise planning, and document intelligence, and validate them with real users and operational data. I translate ambiguous client requirements into scoped AI builds, architecture options, TCO estimates, phased delivery plans, and risk tradeoffs. BS Computer Science, magna cum laude, UP Diliman, 2025.",
+  // Aggregate figures from the resume. The 350,000 stays on the Mr. Bot card.
+  stats: [
+    { value: "7+", label: "client engagements" },
+    { value: "₱1.8M", label: "projected annual client savings" },
+    { value: "54%", label: "cut in LLM token usage" },
+  ],
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/wilsondetorres/" },
     { label: "GitHub", href: "https://github.com/wilsonDT" },
@@ -23,7 +30,7 @@ export const site = {
     },
     {
       title: "Rice leaf detection",
-      line: "Transformer architectures and inference efficiency for rice disease classification. BS Computer Science thesis, UP Diliman, magna cum laude.",
+      line: "Transformer architectures and inference efficiency for rice disease classification. BS Computer Science thesis, UP Diliman.",
       href: "https://rice-leaf-detection.vercel.app",
     },
   ],

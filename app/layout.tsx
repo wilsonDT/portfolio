@@ -11,7 +11,7 @@ const serif = EB_Garamond({
 });
 const sans = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Wilson De Torres",
   },
   description:
-    "AI engineer at Thinking Machines, Makati. Enterprise AI systems in production.",
+    "AI engineer at Thinking Machines. Enterprise AI systems in production.",
 };
 
 export default function RootLayout({

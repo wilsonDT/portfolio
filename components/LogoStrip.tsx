@@ -9,24 +9,27 @@ const TREAT = {
   invert: "[filter:grayscale(1)_invert(1)_contrast(1.4)_brightness(1.15)]",
 } as const;
 
+const H = 36;
+
+// Width at 36px tall, read from the PNG header (IHDR width and height), so the strip reserves its real footprint and nothing below it shifts when the files load.
+function widthAt36(file: string) {
+  const b = fs.readFileSync(file);
+  return Math.round((H * b.readUInt32BE(16)) / b.readUInt32BE(20));
+}
+
 // Employers as logos when the file exists under /public, as mono wordmarks when it doesn't.
 export function LogoStrip() {
   return (
-    <div className="mt-16" data-reveal="" data-i={2}>
+    <div className="intro mt-14" style={{ "--i": 2 } as React.CSSProperties}>
       <p className="mono">Worked at</p>
       <ul className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3">
         {employers.map((e) => {
-          const hasLogo = !!e.logo && fs.existsSync(path.join(process.cwd(), "public", e.logo));
+          const file = e.logo ? path.join(process.cwd(), "public", e.logo) : null;
+          const width = file && fs.existsSync(file) ? widthAt36(file) : 0;
           return (
             <li key={e.slug} className="opacity-80 transition-opacity hover:opacity-100">
-              {hasLogo ? (
-                <Image
-                  src={e.logo!}
-                  alt={e.name}
-                  width={200}
-                  height={36}
-                  className={`h-9 w-auto ${e.logoTreat ? TREAT[e.logoTreat] : ""}`}
-                />
+              {width ? (
+                <Image src={e.logo!} alt={e.name} width={width} height={H} className={e.logoTreat ? TREAT[e.logoTreat] : ""} />
               ) : (
                 <span className="mono text-[12px] tracking-[.14em] text-[var(--ink)]" title={e.name}>
                   {e.short}

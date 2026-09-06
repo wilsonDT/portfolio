@@ -4,6 +4,7 @@
   --ground: #0a0a0a;
   --ink: #ecebe6;
   --mute: #8f8e89;
+  --ink-2: #cfcec8;
   --line: #2a2a28;
   --line-2: #3a3a37;
   --panel: #121211;
@@ -25,7 +26,7 @@ body {
   position: relative;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 15.5px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -43,6 +44,12 @@ body {
 
 /* Layered so utilities like no-underline can override it; an unlayered rule would always win */
 @layer base {
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
   a {
     color: inherit;
     text-decoration: underline;
@@ -92,14 +99,8 @@ body {
   }
 }
 
-/* Reveal: the hidden start state exists only when JS is present */
-html.js [data-reveal] {
-  /* visibility, not clip-path: a clipped element has a 0x0 intersection rect and never crosses the observer threshold */
-  visibility: hidden;
-}
-
-html.js [data-reveal].in {
-  visibility: visible;
+/* Intro: above-the-fold text wipes in on load with no observer, so it paints at first render and is the largest paint early. Only when JS is present, so a failed script still shows everything. */
+html.js .intro {
   animation: wipe 0.52s var(--ease) both;
   animation-delay: calc(var(--i, 0) * 80ms);
 }
@@ -167,7 +168,7 @@ html.js [data-reveal-frame].in .still {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js [data-reveal],
+  html.js .intro,
   html.js [data-reveal-frame] .bar,
   html.js [data-reveal-frame] .still {
     clip-path: none;

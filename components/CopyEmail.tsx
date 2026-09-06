@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+// The address is the button. A click copies it; the mono word beside it says what happened.
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
   async function copy() {
@@ -13,15 +14,13 @@ export function CopyEmail({ email }: { email: string }) {
     }
   }
   return (
-    <>
-      <button
-        type="button"
-        onClick={copy}
-        className="serif cursor-pointer text-[clamp(22px,3.5vw,28px)] leading-none text-[var(--ink)] underline decoration-[var(--line-2)] underline-offset-[.18em] hover:decoration-[var(--ink)]"
-      >
-        {copied ? "Copied" : email}
-      </button>
-      <span className="sr-only" aria-live="polite">{copied ? "Email copied" : ""}</span>
-    </>
+    <button type="button" onClick={copy} className="group inline-flex cursor-pointer flex-wrap items-baseline gap-x-4 text-left">
+      <span className="serif text-[clamp(22px,3.5vw,28px)] leading-none text-[var(--ink)] underline decoration-[var(--line-2)] underline-offset-[.18em] group-hover:decoration-[var(--ink)]">
+        {email}
+      </span>
+      <span className="mono" aria-live="polite">
+        {copied ? "Copied" : "Copy"}
+      </span>
+    </button>
   );
 }
