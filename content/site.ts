@@ -27,14 +27,4 @@ export const site = {
       href: "https://rice-leaf-detection.vercel.app",
     },
   ],
-  mentions: [
-    {
-      title: "Voice agents",
-      line: "Production voice agents for an enterprise client. Details private.",
-    },
-    {
-      title: "AI development framework",
-      line: "Helped build Thinking Machines' internal AI SDLC framework and AI-assisted engineering workflows. Proprietary.",
-    },
-  ],
 };
