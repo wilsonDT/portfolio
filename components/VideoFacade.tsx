@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import type { Video } from "@/content/types";
+import type { Video } from "@/content/after-hours";
 import { Frame } from "./Frame";
 
 // Thumbnail only until clicked; YouTube's script never loads on its own.
