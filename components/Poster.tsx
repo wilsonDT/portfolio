@@ -12,6 +12,7 @@ export function Poster() {
           alt=""
           fill
           priority
+          quality={85}
           sizes="100vw"
           className="art-img object-cover"
           style={{ objectPosition: site.keyArt.focus }}

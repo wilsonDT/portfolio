@@ -7,7 +7,7 @@ export const site = {
   domain: "wilsondetorres.com",
   // Placeholder until Wilson sends his own hero sentences. This one is his LinkedIn line.
   hero: "I build AI products people trust.",
-  // The poster's picture: Wilson's own graded still, exported 2026-09-06 (source PNG kept outside the repo; this JPEG is 2560px wide at quality 88). `focus` is the object-position that keeps the subject clear of the title on tall crops.
+  // The poster's picture: Wilson's own graded still, exported 2026-09-06 (source PNG kept outside the repo; this JPEG is the full 3840px wide at quality 90). `focus` is the object-position that keeps the subject clear of the title on tall crops.
   keyArt: { src: "/key-art/observation-deck.jpg", focus: "52% 38%" },
   // Placeholder until Wilson writes his own. Assembled from his resume sentences, nothing added.
   about:
