@@ -2,7 +2,7 @@ import type { Featured } from "@/content/work";
 import { Frame } from "./Frame";
 import { Still } from "./Still";
 
-// A featured engagement: a letterboxed frame with the client as its archival caption, title and one line, one public number, the story link.
+// A featured engagement: a letterboxed frame whose archival caption is the client, industry and year, then title and one line, one public number, the story link.
 export function WorkCard({ w, i = 0 }: { w: Featured; i?: number }) {
   return (
     <article>

@@ -11,7 +11,7 @@ const serif = EB_Garamond({
 });
 const sans = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500"],
   variable: "--font-sans",
   display: "swap",
 });
