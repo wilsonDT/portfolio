@@ -28,7 +28,7 @@ export function VideoFacade({ v, i = 0 }: { v: Video; i?: number }) {
             src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
             alt=""
             fill
-            sizes="(max-width: 800px) 96vw, 800px"
+            sizes="(max-width: 1000px) 96vw, 960px"
             className="object-cover"
           />
           <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#f2f0ea]/70 bg-black/35">

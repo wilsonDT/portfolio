@@ -75,8 +75,31 @@ body {
   }
 
   .wide {
-    width: min(800px, 96%);
+    width: min(960px, 96%);
     margin-inline: auto;
+  }
+
+  /* Sticky nav. Bare at the top of the page; frosted with a hairline once scrolled; slides away while scrolling down and returns on scroll up. The ease-out keeps the return quick when a reader reaches for it. */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid transparent;
+    transition:
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .topbar[data-scrolled] {
+    background: color-mix(in srgb, var(--ground) 76%, transparent);
+    border-color: var(--line);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .topbar[data-hidden] {
+    transform: translateY(-100%);
   }
 
   .serif {

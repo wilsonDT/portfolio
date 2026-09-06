@@ -10,5 +10,5 @@ const GRADE: Record<Tone, string> = {
 // A graded frame grab when we have one; a graded gradient placeholder when we don't.
 export function Still({ src, alt, tone = "warm" }: { src: string | null; alt: string; tone?: Tone }) {
   if (!src) return <div aria-hidden className="absolute inset-0" style={{ background: GRADE[tone] }} />;
-  return <Image src={src} alt={alt} fill sizes="(max-width: 800px) 96vw, 800px" className="object-cover" />;
+  return <Image src={src} alt={alt} fill sizes="(max-width: 1000px) 96vw, 960px" className="object-cover" />;
 }
