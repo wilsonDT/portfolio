@@ -2,12 +2,12 @@
 
 Date: 2026-09-06
 Owner: Wilson De Torres
-Status: approved in chat, implemented on `main`
+Status: implemented in the `quiet-cut` branch, PR #3
 Refines `2026-09-06-short-cut-design.md`. Everything not mentioned here stands.
 
 ## 1. Why
 
-Wilson's read of v1.1: the index turned into a wall of text from the Work scene down, and the numbered mono labels, arrow glyphs and repeated role lines read as generic AI-generated "cinematic" theming. He asked for a coherent, easy-to-navigate page in the same world: cinematic, minimal, black. Trimming beat moving Work to its own page; the featured numbers are the proof a visitor came for and stay one scroll away.
+Wilson's read of v1.1: the index turned into a wall of text from the Work scene down, and the numbered mono labels, arrow glyphs and repeated role lines read as generic "cinematic" theming. He asked for a coherent, easy-to-navigate page in the same world: cinematic, minimal, black. Trimming beat moving Work to its own page; the featured numbers are the proof a visitor came for and stay one scroll away.
 
 ## 2. Decisions
 
@@ -36,4 +36,4 @@ Wilson's read of v1.1: the index turned into a wall of text from the Work scene 
 
 ## 4. Verification
 
-`npm run check`, `npm run lint`, `tsc --noEmit`, `npm run build` pass. Index height at 1440: 3809px, down from 4384px. Index and `/experience` inspected at 1440 and 390; frames centered; the impeccable detector reports no findings on `app` and `components`.
+`npm run check`, `npm run lint`, `tsc --noEmit`, `npm run build` pass. The trim took the index from 4384px to 3809px at 1440 before the About scene added a screen of its own. Index and `/experience` inspected at 1440 and 390; frames centered; the impeccable detector reports no findings on `app` and `components`.
