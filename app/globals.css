@@ -321,7 +321,7 @@ html.js [data-reveal-frame].in .still {
 }
 
 /* The poster's one moment: the grade lands on the picture while the title's tracking settles, then the credits rise. Only with JS; the still frame is complete on its own. */
-html.js .art-img {
+html.js .poster .art-img {
   animation: grade 1.2s ease-out both;
 }
 
@@ -365,5 +365,146 @@ html.js .rise {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Featured spreads. Each engagement is two columns across the break-out: the number huge on one side as the only display element, the copy left-aligned on the other. Odd entries mirror the columns. */
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  width: min(960px, 96%);
+  margin-inline: auto;
+}
+
+.sheet--mirror {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.sheet--mirror .sheet-figure-block {
+  grid-column: 2;
+  text-align: right;
+}
+
+.sheet--mirror .sheet-text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sheet-figure-block {
+  margin: 0;
+}
+
+.sheet-figure {
+  display: block;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-figure-label {
+  display: block;
+  max-width: 24ch;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--mute);
+}
+
+.sheet--mirror .sheet-figure-label {
+  margin-left: auto;
+}
+
+/* The copy column: name as a small tracked line, then the one line, the credit, what he did, and the link */
+.sheet-name {
+  margin: 0;
+  padding-top: 0.55em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.sheet-line {
+  max-width: 46ch;
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.sheet-meta {
+  margin: 18px 0 0;
+}
+
+.sheet-did {
+  max-width: 52ch;
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* The story link keeps a short name; its box stretches over the spread so the whole spread is clickable */
+.sheet-host {
+  display: inline-block;
+  margin-top: 14px;
+  transition: color 0.2s;
+}
+
+.sheet-host::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sheet:hover .sheet-host,
+.sheet:focus-within .sheet-host {
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .sheet,
+  .sheet--mirror {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+    width: min(620px, 86%); /* on phones the spread follows the text column, not the break-out */
+  }
+
+  .sheet--mirror .sheet-figure-block {
+    grid-column: 1;
+    text-align: left;
+  }
+
+  .sheet--mirror .sheet-figure-label {
+    margin-left: 0;
+  }
+
+  .sheet--mirror .sheet-text {
+    grid-row: auto;
+  }
+
+  .sheet-name {
+    padding-top: 0;
+  }
+}
+
+/* A spread rises once when it enters view: the number first, the copy after. Hidden start states apply only when motion is allowed and JS is present. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-figure-block,
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-text {
+    opacity: 0;
+  }
+
+  html.js .sheet.in .sheet-figure-block {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  html.js .sheet.in .sheet-text {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
   }
 }
