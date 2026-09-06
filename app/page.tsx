@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { CopyEmail } from "@/components/CopyEmail";
-import { LogoStrip } from "@/components/LogoStrip";
-import { LowerThird } from "@/components/LowerThird";
+import { Poster } from "@/components/Poster";
 import { Scene } from "@/components/Scene";
 import { SiteNav } from "@/components/SiteNav";
 import { VideoFacade } from "@/components/VideoFacade";
@@ -17,16 +16,7 @@ export default function Page() {
     <>
       <SiteNav />
       <main id="main">
-        <section className="col pt-24 pb-14" aria-labelledby="hero">
-          <h1
-            id="hero"
-            className="serif intro text-[clamp(40px,6vw,64px)] leading-[1.02] tracking-[-.015em]"
-          >
-            {site.hero}
-          </h1>
-          <LowerThird name={site.name} role={`${site.role} · ${site.org}`} i={1} />
-          <LogoStrip />
-        </section>
+        <Poster />
 
         <Scene
           id="about"
@@ -39,14 +29,6 @@ export default function Page() {
         >
           <div className="col mt-8">
             <p className="max-w-[62ch] text-[15.5px] leading-[1.6] text-[var(--ink-2)]">{site.about}</p>
-            <ul className="mt-10 grid grid-cols-3 gap-4">
-              {site.stats.map((s) => (
-                <li key={s.label}>
-                  <p className="serif m-0 text-[clamp(28px,3.5vw,40px)] leading-none tracking-[-.02em]">{s.value}</p>
-                  <p className="mt-1.5 text-[12.5px] leading-snug text-[var(--mute)]">{s.label}</p>
-                </li>
-              ))}
-            </ul>
           </div>
         </Scene>
 
