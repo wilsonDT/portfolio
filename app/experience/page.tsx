@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
+import { Scene } from "@/components/Scene";
 import { SiteNav } from "@/components/SiteNav";
 import { education, employers } from "@/content/experience";
+import { stack } from "@/content/stack";
 import { openGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -64,12 +67,33 @@ export default function ExperiencePage() {
           );
         })}
 
+        {/* The stack, set as credits. The mono labels share the employers' 132px rail; each row ends with the shipped system it came from. */}
+        <Scene id="stack" title="Stack">
+          <div className="col mt-8">
+            <dl className="credits">
+              {stack.map((r) => (
+                <Fragment key={r.label}>
+                  <dt className="mono">{r.label}</dt>
+                  <dd>
+                    <p className="m-0 max-w-[56ch] text-[15px] leading-[1.6] text-[var(--ink-2)]">{r.names.join(", ")}</p>
+                    <p className="mono mt-1.5">{r.receipt}</p>
+                  </dd>
+                </Fragment>
+              ))}
+            </dl>
+          </div>
+        </Scene>
+
         {/* Not another employer, so not the employers' shape: no year column, no role lines, no left rail.
             It closes the page the way the poster's end card closes the index. */}
         <section id="education" className="col mt-32 pb-4 text-center">
           <div className="hair" />
           <p className="mono mt-9">Education</p>
-          <h2 className="serif mt-5 text-[26px] leading-tight">{education.school}</h2>
+          <h2 className="serif mt-5 text-[26px] leading-tight">
+            <a href={education.href} target="_blank" rel="noreferrer">
+              {education.school}
+            </a>
+          </h2>
           <p className="mt-2 text-[15px] text-[var(--ink-2)]">
             {education.degree}, {education.year}
           </p>

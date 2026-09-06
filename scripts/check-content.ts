@@ -3,6 +3,7 @@ import { statSync } from "node:fs";
 import { afterHours } from "../content/after-hours";
 import { education, employers } from "../content/experience";
 import { site } from "../content/site";
+import { stack, stackLine } from "../content/stack";
 import { featured, restOfWork } from "../content/work";
 
 const PROD = process.env.VERCEL_ENV === "production";
@@ -23,6 +24,8 @@ for (const w of featured) {
   if (!w.figure.value || !w.figure.label) fails.push(`${p}: figure incomplete`);
 }
 if (site.heroTail.length !== 3) fails.push("site.heroTail: the title card's roll is keyed to three tails in globals.css");
+if (!stackLine.length) fails.push("stackLine: the index needs at least one name");
+for (const r of stack) if (!r.label || !r.names.length || !r.receipt) fails.push(`stack/${r.label}: row incomplete, every row needs names and a receipt`);
 for (const e of employers) {
   if (!e.roles.length) fails.push(`experience/${e.slug}: no roles`);
   for (const r of e.roles) if (!r.title || !r.start || !r.end) fails.push(`experience/${e.slug}: role incomplete`);
@@ -33,7 +36,7 @@ const card = statSync("app/og.jpg", { throwIfNoEntry: false });
 if (!card) fails.push("app/og.jpg: missing, run `npm run og`");
 else if (card.size > 300_000) fails.push(`app/og.jpg: ${card.size} bytes, over the 300KB preview ceiling`);
 
-walk({ featured, restOfWork, employers, education, afterHours, site }, "content");
+walk({ featured, restOfWork, employers, education, afterHours, site, stack, stackLine }, "content");
 
 for (const w of warns) console.warn("warn:", w);
 if (fails.length) {

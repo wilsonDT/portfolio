@@ -8,6 +8,7 @@ import { WorkSheet } from "@/components/WorkSheet";
 import { afterHours } from "@/content/after-hours";
 import { education } from "@/content/experience";
 import { site } from "@/content/site";
+import { stackLine } from "@/content/stack";
 import { featured, restOfWork } from "@/content/work";
 
 const years = [...new Set(featured.map((w) => w.year))].join(" · ");
@@ -44,6 +45,17 @@ export default function Page() {
         >
           <div className="col mt-8">
             <p className="max-w-[62ch] text-[15.5px] leading-[1.6] text-[var(--ink-2)]">{site.about}</p>
+            {/* The degree, out of the paragraph and in the side-project card's shape so it is seen. The university is written in full for readers outside the Philippines. */}
+            <div className="mt-10">
+              <h3 className="serif m-0 text-[24px] leading-tight">
+                <a href={education.href} target="_blank" rel="noreferrer">
+                  {education.school}
+                </a>
+              </h3>
+              <p className="mt-2 max-w-[56ch] text-[15px] text-[var(--ink-2)]">
+                {education.degree}, {education.year}.
+              </p>
+            </div>
           </div>
         </Scene>
 
@@ -69,6 +81,20 @@ export default function Page() {
                 </a>
               </article>
             ))}
+          </div>
+        </Scene>
+
+        <Scene
+          id="stack"
+          title="Stack"
+          right={
+            <Link href="/experience#stack" className="no-underline hover:text-[var(--ink)]">
+              Full list
+            </Link>
+          }
+        >
+          <div className="col mt-8">
+            <p className="max-w-[62ch] text-[15.5px] leading-[1.6] text-[var(--ink-2)]">{stackLine.join(", ")}</p>
           </div>
         </Scene>
 
