@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Wilson De Torres",
   },
   description:
-    "AI engineer at Thinking Machines, Makati. Enterprise AI systems in production.",
+    "AI engineer at Thinking Machines. Enterprise AI systems in production.",
 };
 
 export default function RootLayout({

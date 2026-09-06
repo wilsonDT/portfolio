@@ -6,5 +6,5 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export default function Image() {
-  return ogCard({ slate: "Experience", title: site.name, footer: `${site.role} · ${site.org} · ${site.place}` });
+  return ogCard({ slate: "Experience", title: site.name, footer: `${site.role} · ${site.org}` });
 }

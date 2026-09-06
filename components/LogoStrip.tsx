@@ -12,7 +12,7 @@ const TREAT = {
 // Employers as logos when the file exists under /public, as mono wordmarks when it doesn't.
 export function LogoStrip() {
   return (
-    <div className="mt-16" data-reveal="" data-i={2}>
+    <div className="mt-14" data-reveal="" data-i={2}>
       <p className="mono">Worked at</p>
       <ul className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3">
         {employers.map((e) => {
