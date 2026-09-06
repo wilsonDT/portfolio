@@ -26,17 +26,18 @@ It exists to prove his AI work is production-grade: deployed, used by real peopl
 
 ## Positioning
 
-"A modern developer who works with frontier AI and has an actual engineering background." He understands business problems and solves them with AI products that integrate into real work. The credibility mechanism is the case-study format itself: problem, constraint, architecture, numbers, what he'd change. Rigor is shown, not claimed. Creator-style or resume-style portfolios cannot truthfully copy an enterprise delivery record.
+"A modern developer who works with frontier AI and has an actual engineering background." He understands business problems and solves them with AI products that integrate into real work. The credibility mechanism is public, linkable proof: Thinking Machines' published client stories with their numbers, live side projects, and a complete experience record. Rigor is shown, not claimed. Creator-style or resume-style portfolios cannot truthfully copy an enterprise delivery record.
 
 ## Operating Context
 
-- Homepage plus case-study pages ("dossiers"). No blog or notes section in v1. Navigation must leave room to add one later without a redesign.
-- Public case studies come from Thinking Machines' published stories at stories.thinkingmachin.es. Confidential engagements appear anonymized: industry, problem, architecture, and numbers stay; client names and screenshots do not.
+- Homepage plus an experience page (decided 2026-09-06; the v1 case-study "dossier" pages were removed the same day, see docs/superpowers/specs/2026-09-06-short-cut-design.md). No blog or notes section. Navigation must leave room to add one later without a redesign.
+- Public engagements link to Thinking Machines' published stories at stories.thinkingmachin.es and are the only work featured on the homepage. Confidential engagements appear only as resume-level bullets on the experience page: no client names, no screenshots, no internal project names.
 - Personal section ("after hours"): cinematography, video editing, color grading, some digital design. Past video-editing and camera-operator gigs are over; this is a hobby, not a service.
 - Contact channels: email detorres.wilson21@gmail.com, LinkedIn linkedin.com/in/wilsondetorres, GitHub wilsonDT, YouTube channel "Wilson De Torres".
 
 ## Capabilities and Constraints
 
+- Homepage scope (2026-09-06): short, about three screens. Hero with a logo strip of every employer including internships, two featured public engagements with one public figure each, side projects, after hours, end credits. Everything else is a bullet under the role on /experience.
 - Featured and named: NST Apparel "Mr. Bot", a purchase-order assistant embedded in email. Teams CC the bot; it reads threads, follows up with suppliers, extracts quotations, invoices, and shipping documents via document intelligence, and surfaces only exceptions for human review. Azure, OpenAI models. Public metric: 350,000 automated workflow events. Wilson led delivery. Its document pipeline (from the resume, 2026-09-05) runs on Azure Databricks and PySpark: Microsoft Graph email ingestion, attachment deduplication, Azure Document Intelligence, OpenAI classification and field extraction, a detect-classify-extract architecture for multi-document PDFs. The public story does not mention Databricks, so publishing that detail is Wilson's call.
 - Product he built, client instance by others: the reusable "AI simulation" training product behind OnePuhunan's "Pocket Branch Manager" (agentic roleplay personas, performance feedback agent, knowledge assistant, built on TM's Bento toolkit). The project team tailored it for OnePuhunan. Copy must credit the product, not the rollout. Public metrics from the story: officer confidence 3.8 to 4.2 out of 5; knowledge retrieval 16 minutes to 15.84 seconds.
 - Anonymized private work, numbers allowed, names not:
@@ -56,7 +57,7 @@ It exists to prove his AI work is production-grade: deployed, used by real peopl
 - Name: Wilson De Torres. Mark: WDT. Domain: wilsondetorres.com. Pronouns he/him.
 - Voice: direct, short, funny, occasionally blunt in a Filipino way. No fluff, no buzzwords, no fake humility. Professional but not corporate. Cringe-sensitive: when in doubt, cut.
 - Volunteered binding visual constraint, recorded without expansion: near-black #0a0a0a under one subtle full-page gradient (#121211 to #050504) with light grain; scene dividers share the page ground (settled 2026-09-06 after two review rounds: warm charcoal and a black dip both contrasted too hard), minimal, generous negative space, good animation and visuals. Narrow centered text column with wider break-out media frames. Warm paper is a possible future light mode, not in v1. "Film grammar, not film": cinema as design language, not a video hero. Dislikes loud and generic.
-- Working hero line in his voice, pending a copy round: "I build AI that has to work on a Monday."
+- Hero line: his LinkedIn sentence "I build AI products people trust." stands until he sends his own. Invented taglines were rejected on 2026-09-05; only his sentences, cut down.
 
 ## Evidence on Hand
 
