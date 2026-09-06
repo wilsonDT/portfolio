@@ -368,51 +368,25 @@ html.js .rise {
   }
 }
 
-/* Featured one-sheets. Each engagement is a poster in the hero's grammar, shorter: the picture fades into the ground, a pull quote heads the sheet, the number is the title with its label beside it, the product is the star billing. */
+/* Featured one-sheets. Each engagement is a typographic poster: no picture, the copy carries it. A pull quote heads the sheet, the number is the title with its label beside it, the product is the star billing, then one line, one credit line, and the story's host. */
 .sheet-link {
   position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: clamp(520px, 72svh, 760px);
-  padding-block: 52px clamp(36px, 6vh, 64px);
-  color: inherit;
-}
-
-/* A sheet emerges from the ground at its head and returns to it at its foot, so two sheets in a row never meet at a hard edge */
-.sheet-scrim {
-  background:
-    url("/grain.png") repeat,
-    linear-gradient(
-      to bottom,
-      var(--ground) 0%,
-      rgb(10 10 10 / 0.5) 10%,
-      rgb(10 10 10 / 0) 28%,
-      rgb(10 10 10 / 0) 42%,
-      rgb(10 10 10 / 0.88) 72%,
-      var(--ground) 100%
-    );
-}
-
-.sheet-quote,
-.sheet-copy {
-  position: relative;
+  display: block;
   width: min(920px, 92%);
   margin-inline: auto;
+  padding-block: 8px;
   text-align: center;
+  color: inherit;
 }
 
 /* Pull quote at the head of the sheet */
 .sheet-quote {
-  grid-row: 1;
-  margin-block: 0;
+  margin: 0 auto 30px;
+  max-width: 60ch;
   font-size: 14px;
   line-height: 1.5;
   color: var(--ink-2);
   text-wrap: balance;
-}
-
-.sheet-copy {
-  grid-row: 3;
 }
 
 /* The number is the title; its label sits beside it on the baseline and drops beneath on phones */
@@ -463,31 +437,23 @@ html.js .rise {
   color: var(--ink);
 }
 
-/* A sheet develops once when it enters view: the same arrival as the poster, staggered. Hidden start states apply only when motion is allowed and JS is present. */
+/* A sheet rises once when it enters view, staggered like the poster's credits. Hidden start states apply only when motion is allowed and JS is present. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .sheet[data-reveal-frame]:not(.in) .art-img {
-    filter: saturate(0.45) contrast(0.78) brightness(1.22);
-  }
-
   html.js .sheet[data-reveal-frame]:not(.in) .sheet-quote,
   html.js .sheet[data-reveal-frame]:not(.in) .sheet-title,
   html.js .sheet[data-reveal-frame]:not(.in) .sheet-billing {
     opacity: 0;
   }
 
-  html.js .sheet.in .art-img {
-    animation: grade 1.2s ease-out both;
-  }
-
   html.js .sheet.in .sheet-quote {
-    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   html.js .sheet.in .sheet-title {
-    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
   }
 
   html.js .sheet.in .sheet-billing {
-    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
   }
 }

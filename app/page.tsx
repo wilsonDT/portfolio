@@ -33,7 +33,7 @@ export default function Page() {
         </Scene>
 
         <Scene id="work" title="Work" right={`${site.org} · ${years}`}>
-          <div className="mt-12 space-y-10">
+          <div className="mt-16 space-y-24">
             {featured.map((w, i) => (
               <WorkSheet key={w.index} w={w} i={i} />
             ))}
