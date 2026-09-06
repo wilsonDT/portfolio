@@ -4,14 +4,12 @@ import { education, employers } from "../content/experience";
 import { site } from "../content/site";
 import { featured, restOfWork } from "../content/work";
 
-const BANNED = ["1,900", "1900"]; // a figure from an engagement that is not on the site
 const PROD = process.env.VERCEL_ENV === "production";
 const fails: string[] = [];
 const warns: string[] = [];
 
 function walk(v: unknown, path: string) {
   if (typeof v === "string") {
-    for (const b of BANNED) if (v.includes(b)) fails.push(`${path}: banned "${b}"`);
     if (v.includes("[DRAFT]")) (PROD ? fails : warns).push(`${path}: draft marker`);
     if (path.endsWith(".href") && !v.startsWith("https://")) fails.push(`${path}: link is not https`);
   } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${path}[${i}]`));

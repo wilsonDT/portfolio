@@ -16,8 +16,8 @@ export const site = {
     "AI engineer at Thinking Machines. I ship production AI systems across automation, workforce training, voice, enterprise planning, and document intelligence, and validate them with real users and operational data. I translate ambiguous client requirements into scoped AI builds, architecture options, TCO estimates, phased delivery plans, and risk tradeoffs. BS Computer Science, magna cum laude, UP Diliman, 2025.",
   // Aggregate figures from the resume. The 350,000 stays on the Mr. Bot card.
   stats: [
-    { value: "7+", label: "client engagements" },
-    { value: "₱1.8M", label: "projected annual client savings" },
+    { value: "7+", label: "enterprise AI projects" },
+    { value: "2,000+", label: "users in production" },
     { value: "54%", label: "cut in LLM token usage" },
   ],
   links: [
