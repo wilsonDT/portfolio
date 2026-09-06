@@ -4,7 +4,7 @@ import { Poster } from "@/components/Poster";
 import { Scene } from "@/components/Scene";
 import { SiteNav } from "@/components/SiteNav";
 import { VideoFacade } from "@/components/VideoFacade";
-import { WorkCard } from "@/components/WorkCard";
+import { WorkSheet } from "@/components/WorkSheet";
 import { afterHours } from "@/content/after-hours";
 import { site } from "@/content/site";
 import { featured, restOfWork } from "@/content/work";
@@ -33,9 +33,9 @@ export default function Page() {
         </Scene>
 
         <Scene id="work" title="Work" right={`${site.org} · ${years}`}>
-          <div className="space-y-24 pt-12">
+          <div className="mt-12 space-y-10">
             {featured.map((w, i) => (
-              <WorkCard key={w.index} w={w} i={i} />
+              <WorkSheet key={w.index} w={w} i={i} />
             ))}
           </div>
           <p className="col mt-16 text-[15px] text-[var(--ink-2)]">

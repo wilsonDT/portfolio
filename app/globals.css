@@ -367,3 +367,127 @@ html.js .rise {
     transform: none;
   }
 }
+
+/* Featured one-sheets. Each engagement is a poster in the hero's grammar, shorter: the picture fades into the ground, a pull quote heads the sheet, the number is the title with its label beside it, the product is the star billing. */
+.sheet-link {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: clamp(520px, 72svh, 760px);
+  padding-block: 52px clamp(36px, 6vh, 64px);
+  color: inherit;
+}
+
+/* A sheet emerges from the ground at its head and returns to it at its foot, so two sheets in a row never meet at a hard edge */
+.sheet-scrim {
+  background:
+    url("/grain.png") repeat,
+    linear-gradient(
+      to bottom,
+      var(--ground) 0%,
+      rgb(10 10 10 / 0.5) 10%,
+      rgb(10 10 10 / 0) 28%,
+      rgb(10 10 10 / 0) 42%,
+      rgb(10 10 10 / 0.88) 72%,
+      var(--ground) 100%
+    );
+}
+
+.sheet-quote,
+.sheet-copy {
+  position: relative;
+  width: min(920px, 92%);
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Pull quote at the head of the sheet */
+.sheet-quote {
+  grid-row: 1;
+  margin-block: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: balance;
+}
+
+.sheet-copy {
+  grid-row: 3;
+}
+
+/* The number is the title; its label sits beside it on the baseline and drops beneath on phones */
+.sheet-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 0.45em;
+  margin: 0;
+}
+
+.sheet-figure {
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-figure-label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.sheet-billing {
+  margin-top: 20px;
+}
+
+.sheet-line {
+  max-width: 52ch;
+  margin: 2px auto 6px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-2);
+}
+
+.sheet-host {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-transform: none;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.sheet-link:hover .sheet-host {
+  color: var(--ink);
+}
+
+/* A sheet develops once when it enters view: the same arrival as the poster, staggered. Hidden start states apply only when motion is allowed and JS is present. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .sheet[data-reveal-frame]:not(.in) .art-img {
+    filter: saturate(0.45) contrast(0.78) brightness(1.22);
+  }
+
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-quote,
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-title,
+  html.js .sheet[data-reveal-frame]:not(.in) .sheet-billing {
+    opacity: 0;
+  }
+
+  html.js .sheet.in .art-img {
+    animation: grade 1.2s ease-out both;
+  }
+
+  html.js .sheet.in .sheet-quote {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+
+  html.js .sheet.in .sheet-title {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  html.js .sheet.in .sheet-billing {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  }
+}
