@@ -19,7 +19,7 @@ Goals, in priority order: credibility and a brand that can grow for a career, th
 | Cinema level | Film grammar, not film. No video hero. Videos only in After hours |
 | Hero framing | Title card (option A), rebuilt in a narrow column |
 | Layout | 620px text column, media frames break out to 800px |
-| Ground | Warm charcoal `#171716`. Warm paper is a possible future light theme, not v1 |
+| Ground | Near-black `#0a0a0a` under one subtle full-page gradient. Scene dividers share the page ground. Warm paper is a possible future light theme, not v1 |
 | Type | EB Garamond titles and big numbers, Geist body and UI, JetBrains Mono slates. No italics |
 | Documentary devices | Lower-third name card, subtitles inside frames, archival captions on frames |
 | Redaction | Black bars over confidential client names |
@@ -42,7 +42,7 @@ Goals, in priority order: credibility and a brand that can grow for a career, th
 
 ### Index scenes
 
-Each scene is a section in the 620px column. Between scenes, a full-width black band (`#000`, about 180px tall) carrying the next scene's slate label in mono, centered. The bands are the cuts.
+Each scene is a section in the 620px column. Between scenes, a 220px band in the page ground carrying the next scene's slate label in mono, centered. The cut is the pause and the label, not a colour change.
 
 - **00 Cold open.** Slate `00 / Cold open` top-left of the column. Serif hero line (Wilson's words). One sub sentence in Geist light. Lower-third name card: name in Geist medium, role line in mono, a 2px rule on the left. Nav sits above: WDT mark and name left, `Work · After hours · Contact` in mono right. Nav links scroll to scenes.
 - **01 Work.** Two featured cards, stacked: each is a break-out letterboxed still (2.39:1) with archival caption top-left and a subtitle line bottom-center, then a slate row (index, client, industry, year) and a row with serif title left and one big number right. Below, a list of compact rows for the private work: slate with a black bar where the client name would be, serif title, one-line deck, one number where allowed. Featured cards and rows link to dossiers. Then two mention rows with no page: voice agents ("details private") and the AI SDLC framework ("helped build Thinking Machines' internal AI development framework, details proprietary").
@@ -72,12 +72,12 @@ Same for all four, depth varies.
 
 | Token | Value | Use |
 |---|---|---|
-| `--ground` | `#171716` | page background |
+| `--ground` | `#0a0a0a` | page background, under one subtle full-page gradient `#121211` to `#050504` (settled after review; warm charcoal and black dip bands both contrasted too hard) |
 | `--ink` | `#ecebe6` | primary text |
 | `--mute` | `#8f8e89` | secondary text, slates, captions (5.5:1 on ground, passes AA) |
 | `--line` | `#2a2a28` | hairlines |
 | `--line-2` | `#3a3a37` | borders on marks and nodes |
-| `--panel` | `#0f0f0e` | diagram panel background |
+| `--panel` | `#121211` | diagram panel background |
 | `--black` | `#000000` | letterbox bars, redaction bars, cut bands, cut overlay. Nowhere else |
 
 All tokens are CSS custom properties on `:root` so a second theme (warm paper) can be added later by redefining them.

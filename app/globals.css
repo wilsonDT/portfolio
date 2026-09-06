@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #0a0a0a;
+  --ink: #ecebe6;
+  --mute: #8f8e89;
+  --line: #2a2a28;
+  --line-2: #3a3a37;
+  --panel: #121211;
+  --black: #000;
+  --ease: cubic-bezier(0.77, 0, 0.18, 1);
+  color-scheme: dark;
+}
+
+html {
+  /* Ground: light grain over one subtle gradient that runs the full height of the page */
+  min-height: 100dvh;
+  background:
+    url("/grain.png") repeat,
+    linear-gradient(180deg, #121211 0%, #0a0a0a 45%, #050504 100%) no-repeat,
+    var(--ground);
+}
+
+body {
+  position: relative;
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 0.15s;
+}
+
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+* {
+  scrollbar-color: var(--line-2) var(--ground);
+}
+
+/* Layout measures and type registers live in the components layer so Tailwind utilities can override them */
+@layer components {
+  .col {
+    width: min(620px, 86%);
+    margin-inline: auto;
+  }
+
+  .wide {
+    width: min(800px, 96%);
+    margin-inline: auto;
+  }
+
+  .serif {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.008em;
+  }
+
+  .mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .hair {
+    height: 1px;
+    background: var(--line);
+  }
+}
+
+/* Reveal: the hidden start state exists only when JS is present */
+html.js [data-reveal] {
+  /* visibility, not clip-path: a clipped element has a 0x0 intersection rect and never crosses the observer threshold */
+  visibility: hidden;
+}
+
+html.js [data-reveal].in {
+  visibility: visible;
+  animation: wipe 0.52s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+html.js [data-reveal-frame] .bar {
+  transform: scaleY(0);
+}
+
+html.js [data-reveal-frame] .bar.top {
+  transform-origin: top;
+}
+
+html.js [data-reveal-frame] .bar.bot {
+  transform-origin: bottom;
+}
+
+html.js [data-reveal-frame] .still {
+  opacity: 0;
+}
+
+html.js [data-reveal-frame].in .bar {
+  animation: bars 0.36s var(--ease) forwards;
+}
+
+html.js [data-reveal-frame].in .still {
+  animation: fade 0.4s ease-out 0.2s forwards;
+}
+
+@keyframes bars {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cut to black on every route change */
+.cut {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 50;
+  pointer-events: none;
+  animation: cut 0.12s steps(1, end) forwards;
+}
+
+@keyframes cut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal],
+  html.js [data-reveal-frame] .bar,
+  html.js [data-reveal-frame] .still {
+    clip-path: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    animation: none;
+  }
+
+  .cut {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Card hover: the still brightens a touch */
+.still {
+  transition: filter 0.2s;
+}
+
+.group:hover .still {
+  filter: brightness(1.08);
+}
+
+/* Dossier body: scene index in the left margin on wide screens, above the text otherwise */
+.dossier-body {
+  display: block;
+}
+
+.breakout {
+  position: relative;
+  left: 50%;
+  width: min(800px, 96vw);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 1100px) {
+  .dossier-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(620px, 86%) minmax(0, 1fr);
+  }
+
+  .dossier-body > .scene-index {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    justify-self: end;
+    margin-right: 56px;
+  }
+
+  .dossier-body > .dossier-content {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.scene-index a {
+  text-decoration: none;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+  display: block;
+  padding-block: 5px;
+  color: var(--mute);
+}
+
+.scene-index a[aria-current="true"] {
+  color: var(--ink);
+  border-left-color: var(--ink);
+}
+
+@media (max-width: 1099px) {
+  .scene-index ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+  }
+
+  .scene-index a {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Architecture flow */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.flow .arrow {
+  flex: 0 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mute);
+}
+
+.flow .node,
+.flow .branches {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.flow .branches {
+  display: grid;
+  gap: 8px;
+}
+
+@media (max-width: 799px) {
+  .flow {
+    flex-direction: column;
+  }
+
+  .flow .arrow {
+    flex-basis: 22px;
+    transform: rotate(90deg);
+  }
+}
