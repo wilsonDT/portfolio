@@ -99,14 +99,8 @@ body {
   }
 }
 
-/* Reveal: the hidden start state exists only when JS is present */
-html.js [data-reveal] {
-  /* visibility, not clip-path: a clipped element has a 0x0 intersection rect and never crosses the observer threshold */
-  visibility: hidden;
-}
-
-html.js [data-reveal].in {
-  visibility: visible;
+/* Intro: above-the-fold text wipes in on load with no observer, so it paints at first render and is the largest paint early. Only when JS is present, so a failed script still shows everything. */
+html.js .intro {
   animation: wipe 0.52s var(--ease) both;
   animation-delay: calc(var(--i, 0) * 80ms);
 }
@@ -174,7 +168,7 @@ html.js [data-reveal-frame].in .still {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js [data-reveal],
+  html.js .intro,
   html.js [data-reveal-frame] .bar,
   html.js [data-reveal-frame] .still {
     clip-path: none;

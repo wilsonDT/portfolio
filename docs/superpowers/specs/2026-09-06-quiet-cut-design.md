@@ -23,7 +23,8 @@ Wilson's read of v1.1: the index turned into a wall of text from the Work scene 
 | Links | No arrow or external-link glyphs. Inline links underline; mono meta links brighten on hover. Hosts and the footer line are lowercase mono. |
 | Nav | Geist 13px, muted, current page in ink, mark without a box. Mono stays for slates, captions and meta only. |
 | Body | Geist 400, not 300; light weight thinned out on the dark ground. New token `--ink-2` (#cfcec8) for secondary body copy. |
-| Motion | Reveals only on the hero group (line, lower third, logos) and on frames (bars close, still fades). Text below frames is static. |
+| Motion | Reveals only on the hero group (line, lower third, logos) and on frames (bars close, still fades). Text below frames is static. The hero group wipes in with a CSS-only animation on load, no observer, so the largest text paints at first render instead of after hydration. Frames keep the IntersectionObserver. |
+| Logo strip | Each logo reserves its real width at 36px tall, read from the PNG header at build time, so nothing below the strip shifts when the files load. The old fixed 200px placeholder wrapped the strip onto several rows on phones and then collapsed it, which moved the About scene. |
 | Location | No city on the index, in metadata, or on the OG cards; Wilson markets himself as global and remote. The lower third reads `AI Engineer · Thinking Machines`, the footer `wilsondetorres.com · v1`. Employer locations on `/experience` stay as facts. |
 | Email | The address is the button; a mono `Copy` beside it becomes `Copied`. No label above it. |
 | Experience page | No slate above the heading; the range sits under it. Year ranges use an en dash. `Story` links underline instead of carrying an arrow. |
@@ -36,4 +37,4 @@ Wilson's read of v1.1: the index turned into a wall of text from the Work scene 
 
 ## 4. Verification
 
-`npm run check`, `npm run lint`, `tsc --noEmit`, `npm run build` pass. The trim took the index from 4384px to 3809px at 1440 before the About scene added a screen of its own. Index and `/experience` inspected at 1440 and 390; frames centered; the impeccable detector reports no findings on `app` and `components`.
+`npm run check`, `npm run lint`, `tsc --noEmit`, `npm run build` pass. The trim took the index from 4384px to 3809px at 1440 before the About scene added a screen of its own. Index and `/experience` inspected at 1440 and 390; frames centered; the impeccable detector reports no findings on `app` and `components`. Lighthouse mobile on the production build: index 92 to 96 performance over three runs, experience 96, accessibility 100, SEO 100, layout shift 0 on both. The first cut of this branch scored 70 on the index: a 0.17 layout shift from the logo strip's 200px placeholders and a hero hidden until hydration; both are fixed above.

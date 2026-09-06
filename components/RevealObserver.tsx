@@ -1,10 +1,10 @@
 "use client";
 import { useEffect } from "react";
 
-// Adds `.in` once when a reveal target enters view. Lives in app/template.tsx so it re-runs per navigation.
+// Adds `.in` once when a frame enters view. Lives in app/template.tsx so it re-runs per navigation. Hero text uses the CSS-only `.intro` instead.
 export function RevealObserver() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-frame]");
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal-frame]");
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("in"));
       return;

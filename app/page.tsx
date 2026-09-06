@@ -20,9 +20,7 @@ export default function Page() {
         <section className="col pt-24 pb-14" aria-labelledby="hero">
           <h1
             id="hero"
-            className="serif text-[clamp(40px,6vw,64px)] leading-[1.02] tracking-[-.015em]"
-            data-reveal=""
-            data-i={0}
+            className="serif intro text-[clamp(40px,6vw,64px)] leading-[1.02] tracking-[-.015em]"
           >
             {site.hero}
           </h1>

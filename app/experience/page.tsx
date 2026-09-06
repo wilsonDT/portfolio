@@ -15,7 +15,7 @@ export default function ExperiencePage() {
       <SiteNav current="experience" />
       <main id="main" className="pb-24">
         <header className="col pt-24">
-          <h1 className="serif text-[clamp(40px,6vw,58px)] leading-none tracking-[-.02em]" data-reveal="" data-i={0}>
+          <h1 className="serif intro text-[clamp(40px,6vw,58px)] leading-none tracking-[-.02em]">
             Experience
           </h1>
           <p className="mono mt-4">{first} – present</p>
