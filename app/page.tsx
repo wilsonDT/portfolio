@@ -6,15 +6,29 @@ import { SiteNav } from "@/components/SiteNav";
 import { Reel } from "@/components/Reel";
 import { WorkSheet } from "@/components/WorkSheet";
 import { afterHours } from "@/content/after-hours";
+import { education } from "@/content/experience";
 import { site } from "@/content/site";
 import { featured, restOfWork } from "@/content/work";
 
 const years = [...new Set(featured.map((w) => w.year))].join(" · ");
 const youtube = site.links.find((l) => l.label === "YouTube")!.href;
 
+// Structured data for the name search. The same profiles as the contact block, so search engines can tie them to this page.
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: `https://${site.domain}`,
+  jobTitle: site.role,
+  worksFor: { "@type": "Organization", name: site.org },
+  alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
+  sameAs: site.links.map((l) => l.href),
+};
+
 export default function Page() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, "\\u003c") }} />
       <SiteNav />
       <main id="main">
         <Poster />
