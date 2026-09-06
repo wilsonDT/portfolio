@@ -44,7 +44,7 @@ export default function Page() {
               </Link>
             </div>
             <p className="mono mt-1.5">
-              {role.title} · {current.roles[current.roles.length - 1].start} – {role.end.toLowerCase()}
+              {site.role} · {current.roles[current.roles.length - 1].start} – {role.end.toLowerCase()}
             </p>
           </div>
           <div className="space-y-20 pt-14">
