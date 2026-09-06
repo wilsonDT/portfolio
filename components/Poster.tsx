@@ -24,14 +24,12 @@ export function Poster() {
         <h1 id="hero" className="serif title">
           <span className="title-stem">{site.heroStem}</span>
           <span className="title-roll">
-            {/* The first tail again at the end, so the roll returns to the top on a frame that already matches. Only the first names the heading. */}
-            <span className="title-track">
-              {[...site.heroTail, site.heroTail[0]].map((tail, i) => (
-                <span key={i} className="title-slide" aria-hidden={i > 0 || undefined}>
-                  {tail}
-                </span>
-              ))}
-            </span>
+            {/* The tails stack on one line and take turns. Only the first names the heading. */}
+            {site.heroTail.map((tail, i) => (
+              <span key={tail} className="title-slide" aria-hidden={i > 0 || undefined}>
+                {tail}
+              </span>
+            ))}
           </span>
         </h1>
 
